@@ -18,7 +18,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <tr>
         <td align="center" background="<%=basePath %>images/error.jpg"><table width="388" height="194" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td align="center"><img src="<%=basePath %>images/error_b.gif" width="31" height="31">&nbsp;&nbsp;${exception.message }<br>
+            <td align="center"><img src="<%=basePath %>images/error_b.gif" width="31" height="31">&nbsp;&nbsp;${exception.message } ${error}<br>
               <br>
               <input name="Submit" type="submit" class="btn_grey" value="·µ»Ø" onClick="history.back(-1)"></td>
           </tr>
