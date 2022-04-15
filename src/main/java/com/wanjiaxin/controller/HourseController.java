@@ -25,7 +25,9 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
-//Hourse管理控制层
+/**
+ * @author 1035
+ */ //Hourse管理控制层
 @Controller
 @RequestMapping("/Hourse")
 public class HourseController extends BaseController {
@@ -95,12 +97,24 @@ public class HourseController extends BaseController {
 	/*ajax方式按照查询条件分页查询房屋信息信息*/
 	@RequestMapping(value = { "/list" }, method = {RequestMethod.GET,RequestMethod.POST})
 	public void list(String hourseName,@ModelAttribute("buildingObj") BuildingInfo buildingObj,@ModelAttribute("hourseTypeObj") HourseType hourseTypeObj,@ModelAttribute("priceRangeObj") PriceRange priceRangeObj,String madeYear,String connectPerson,String connectPhone,Integer page,Integer rows, Model model, HttpServletRequest request,HttpServletResponse response) throws Exception {
-		if (page==null || page == 0) page = 1;
-		if (hourseName == null) hourseName = "";
-		if (madeYear == null) madeYear = "";
-		if (connectPerson == null) connectPerson = "";
-		if (connectPhone == null) connectPhone = "";
-		if(rows != 0)hourseService.setRows(rows);
+		if (page==null || page == 0) {
+			page = 1;
+		}
+		if (hourseName == null) {
+			hourseName = "";
+		}
+		if (madeYear == null) {
+			madeYear = "";
+		}
+		if (connectPerson == null) {
+			connectPerson = "";
+		}
+		if (connectPhone == null) {
+			connectPhone = "";
+		}
+		if(rows != 0) {
+			hourseService.setRows(rows);
+		}
 		List<Hourse> hourseList = hourseService.queryHourse(hourseName, buildingObj, hourseTypeObj, priceRangeObj, madeYear, connectPerson, connectPhone, page);
 	    /*计算总的页数和总的记录数*/
 	    hourseService.queryTotalPageAndRecordNumber(hourseName, buildingObj, hourseTypeObj, priceRangeObj, madeYear, connectPerson, connectPhone);
@@ -145,11 +159,21 @@ public class HourseController extends BaseController {
 	/*前台按照查询条件分页查询房屋信息信息*/
 	@RequestMapping(value = { "/frontlist" }, method = {RequestMethod.GET,RequestMethod.POST})
 	public String frontlist(String hourseName,@ModelAttribute("buildingObj") BuildingInfo buildingObj,@ModelAttribute("hourseTypeObj") HourseType hourseTypeObj,@ModelAttribute("priceRangeObj") PriceRange priceRangeObj,String madeYear,String connectPerson,String connectPhone,Integer currentPage, Model model, HttpServletRequest request) throws Exception  {
-		if (currentPage==null || currentPage == 0) currentPage = 1;
-		if (hourseName == null) hourseName = "";
-		if (madeYear == null) madeYear = "";
-		if (connectPerson == null) connectPerson = "";
-		if (connectPhone == null) connectPhone = "";
+		if (currentPage==null || currentPage == 0) {
+			currentPage = 1;
+		}
+		if (hourseName == null) {
+			hourseName = "";
+		}
+		if (madeYear == null) {
+			madeYear = "";
+		}
+		if (connectPerson == null) {
+			connectPerson = "";
+		}
+		if (connectPhone == null) {
+			connectPhone = "";
+		}
 		List<Hourse> hourseList = hourseService.queryHourse(hourseName, buildingObj, hourseTypeObj, priceRangeObj, madeYear, connectPerson, connectPhone, currentPage);
 	    /*计算总的页数和总的记录数*/
 	    hourseService.queryTotalPageAndRecordNumber(hourseName, buildingObj, hourseTypeObj, priceRangeObj, madeYear, connectPerson, connectPhone);
@@ -257,7 +281,9 @@ public class HourseController extends BaseController {
 			return;
 		}
 		String housePhotoFileName = this.handlePhotoUpload(request, "housePhotoFile");
-		if(!housePhotoFileName.equals("upload/NoImage.jpg"))hourse.setHousePhoto(housePhotoFileName); 
+		if(!"upload/NoImage.jpg".equals(housePhotoFileName)) {
+			hourse.setHousePhoto(housePhotoFileName);
+		}
 
 
 		try {
@@ -307,10 +333,18 @@ public class HourseController extends BaseController {
 	/*按照查询条件导出房屋信息信息到Excel*/
 	@RequestMapping(value = { "/OutToExcel" }, method = {RequestMethod.GET,RequestMethod.POST})
 	public void OutToExcel(String hourseName,@ModelAttribute("buildingObj") BuildingInfo buildingObj,@ModelAttribute("hourseTypeObj") HourseType hourseTypeObj,@ModelAttribute("priceRangeObj") PriceRange priceRangeObj,String madeYear,String connectPerson,String connectPhone, Model model, HttpServletRequest request,HttpServletResponse response) throws Exception {
-        if(hourseName == null) hourseName = "";
-        if(madeYear == null) madeYear = "";
-        if(connectPerson == null) connectPerson = "";
-        if(connectPhone == null) connectPhone = "";
+        if(hourseName == null) {
+			hourseName = "";
+		}
+        if(madeYear == null) {
+			madeYear = "";
+		}
+        if(connectPerson == null) {
+			connectPerson = "";
+		}
+        if(connectPhone == null) {
+			connectPhone = "";
+		}
         List<Hourse> hourseList = hourseService.queryHourse(hourseName,buildingObj,hourseTypeObj,priceRangeObj,madeYear,connectPerson,connectPhone);
         ExportExcelUtil ex = new ExportExcelUtil();
         String _title = "Hourse信息记录"; 

@@ -40,7 +40,7 @@ public class HourseTypeController extends BaseController {
 	}
 	/*跳转到添加HourseType视图*/
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
-	public String add(Model model,HttpServletRequest request) throws Exception {
+	public String add(Model model) throws Exception {
 		model.addAttribute(new HourseType());
 		return "HourseType_add";
 	}
@@ -64,8 +64,12 @@ public class HourseTypeController extends BaseController {
 	/*ajax方式按照查询条件分页查询房屋类别信息*/
 	@RequestMapping(value = { "/list" }, method = {RequestMethod.GET,RequestMethod.POST})
 	public void list(Integer page,Integer rows, Model model, HttpServletRequest request,HttpServletResponse response) throws Exception {
-		if (page==null || page == 0) page = 1;
-		if(rows != 0)hourseTypeService.setRows(rows);
+		if (page==null || page == 0) {
+			page = 1;
+		}
+		if(rows != 0) {
+			hourseTypeService.setRows(rows);
+		}
 		List<HourseType> hourseTypeList = hourseTypeService.queryHourseType(page);
 	    /*计算总的页数和总的记录数*/
 	    hourseTypeService.queryTotalPageAndRecordNumber();
@@ -110,7 +114,9 @@ public class HourseTypeController extends BaseController {
 	/*前台按照查询条件分页查询房屋类别信息*/
 	@RequestMapping(value = { "/frontlist" }, method = {RequestMethod.GET,RequestMethod.POST})
 	public String frontlist(Integer currentPage, Model model, HttpServletRequest request) throws Exception  {
-		if (currentPage==null || currentPage == 0) currentPage = 1;
+		if (currentPage==null || currentPage == 0) {
+			currentPage = 1;
+		}
 		List<HourseType> hourseTypeList = hourseTypeService.queryHourseType(currentPage);
 	    /*计算总的页数和总的记录数*/
 	    hourseTypeService.queryTotalPageAndRecordNumber();

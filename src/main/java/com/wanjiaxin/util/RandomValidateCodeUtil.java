@@ -37,7 +37,7 @@ public class RandomValidateCodeUtil {
      * Object[1]：验证码图片。
      */
     public static Object[] createImage() {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         // 1.创建空白图片
         BufferedImage image = new BufferedImage(
                 WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);

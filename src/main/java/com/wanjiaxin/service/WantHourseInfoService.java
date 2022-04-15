@@ -7,12 +7,16 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 
+/**
+ * @author 1035
+ */
 @Service
 public class WantHourseInfoService {
 
 	@Resource WantHourseInfoMapper wantHourseInfoMapper;
     /*每页显示记录数目*/
-    private int rows = 10;;
+    private int rows = 10;
+
     public int getRows() {
 		return rows;
 	}
@@ -46,11 +50,21 @@ public class WantHourseInfoService {
     /*按照查询条件分页查询求租信息记录*/
     public ArrayList<WantHourseInfo> queryWantHourseInfo(UserInfo userObj,String title,AreaInfo position,HourseType hourseTypeObj,PriceRange priceRangeObj,int currentPage) throws Exception { 
      	String where = "where 1=1";
-    	if(null != userObj &&  userObj.getUser_name() != null  && !userObj.getUser_name().equals(""))  where += " and t_wantHourseInfo.userObj='" + userObj.getUser_name() + "'";
-    	if(!title.equals("")) where = where + " and t_wantHourseInfo.title like '%" + title + "%'";
-    	if(null != position && position.getAreaId()!= null && position.getAreaId()!= 0)  where += " and t_wantHourseInfo.position=" + position.getAreaId();
-    	if(null != hourseTypeObj && hourseTypeObj.getTypeId()!= null && hourseTypeObj.getTypeId()!= 0)  where += " and t_wantHourseInfo.hourseTypeObj=" + hourseTypeObj.getTypeId();
-    	if(null != priceRangeObj && priceRangeObj.getRangeId()!= null && priceRangeObj.getRangeId()!= 0)  where += " and t_wantHourseInfo.priceRangeObj=" + priceRangeObj.getRangeId();
+    	if(null != userObj &&  userObj.getUser_name() != null  && !"".equals(userObj.getUser_name())) {
+            where += " and t_wantHourseInfo.userObj='" + userObj.getUser_name() + "'";
+        }
+    	if(!"".equals(title)) {
+            where = where + " and t_wantHourseInfo.title like '%" + title + "%'";
+        }
+    	if(null != position && position.getAreaId()!= null && position.getAreaId()!= 0) {
+            where += " and t_wantHourseInfo.position=" + position.getAreaId();
+        }
+    	if(null != hourseTypeObj && hourseTypeObj.getTypeId()!= null && hourseTypeObj.getTypeId()!= 0) {
+            where += " and t_wantHourseInfo.hourseTypeObj=" + hourseTypeObj.getTypeId();
+        }
+    	if(null != priceRangeObj && priceRangeObj.getRangeId()!= null && priceRangeObj.getRangeId()!= 0) {
+            where += " and t_wantHourseInfo.priceRangeObj=" + priceRangeObj.getRangeId();
+        }
     	int startIndex = (currentPage-1) * this.rows;
     	return wantHourseInfoMapper.queryWantHourseInfo(where, startIndex, this.rows);
     }
@@ -58,11 +72,21 @@ public class WantHourseInfoService {
     /*按照查询条件查询所有记录*/
     public ArrayList<WantHourseInfo> queryWantHourseInfo(UserInfo userObj,String title,AreaInfo position,HourseType hourseTypeObj,PriceRange priceRangeObj) throws Exception  { 
      	String where = "where 1=1";
-    	if(null != userObj &&  userObj.getUser_name() != null && !userObj.getUser_name().equals(""))  where += " and t_wantHourseInfo.userObj='" + userObj.getUser_name() + "'";
-    	if(!title.equals("")) where = where + " and t_wantHourseInfo.title like '%" + title + "%'";
-    	if(null != position && position.getAreaId()!= null && position.getAreaId()!= 0)  where += " and t_wantHourseInfo.position=" + position.getAreaId();
-    	if(null != hourseTypeObj && hourseTypeObj.getTypeId()!= null && hourseTypeObj.getTypeId()!= 0)  where += " and t_wantHourseInfo.hourseTypeObj=" + hourseTypeObj.getTypeId();
-    	if(null != priceRangeObj && priceRangeObj.getRangeId()!= null && priceRangeObj.getRangeId()!= 0)  where += " and t_wantHourseInfo.priceRangeObj=" + priceRangeObj.getRangeId();
+    	if(null != userObj &&  userObj.getUser_name() != null && !"".equals(userObj.getUser_name())) {
+            where += " and t_wantHourseInfo.userObj='" + userObj.getUser_name() + "'";
+        }
+    	if(!"".equals(title)) {
+            where = where + " and t_wantHourseInfo.title like '%" + title + "%'";
+        }
+    	if(null != position && position.getAreaId()!= null && position.getAreaId()!= 0) {
+            where += " and t_wantHourseInfo.position=" + position.getAreaId();
+        }
+    	if(null != hourseTypeObj && hourseTypeObj.getTypeId()!= null && hourseTypeObj.getTypeId()!= 0) {
+            where += " and t_wantHourseInfo.hourseTypeObj=" + hourseTypeObj.getTypeId();
+        }
+    	if(null != priceRangeObj && priceRangeObj.getRangeId()!= null && priceRangeObj.getRangeId()!= 0) {
+            where += " and t_wantHourseInfo.priceRangeObj=" + priceRangeObj.getRangeId();
+        }
     	return wantHourseInfoMapper.queryWantHourseInfoList(where);
     }
 
@@ -74,21 +98,32 @@ public class WantHourseInfoService {
     /*当前查询条件下计算总的页数和记录数*/
     public void queryTotalPageAndRecordNumber(UserInfo userObj,String title,AreaInfo position,HourseType hourseTypeObj,PriceRange priceRangeObj) throws Exception {
      	String where = "where 1=1";
-    	if(null != userObj &&  userObj.getUser_name() != null && !userObj.getUser_name().equals(""))  where += " and t_wantHourseInfo.userObj='" + userObj.getUser_name() + "'";
-    	if(!title.equals("")) where = where + " and t_wantHourseInfo.title like '%" + title + "%'";
-    	if(null != position && position.getAreaId()!= null && position.getAreaId()!= 0)  where += " and t_wantHourseInfo.position=" + position.getAreaId();
-    	if(null != hourseTypeObj && hourseTypeObj.getTypeId()!= null && hourseTypeObj.getTypeId()!= 0)  where += " and t_wantHourseInfo.hourseTypeObj=" + hourseTypeObj.getTypeId();
-    	if(null != priceRangeObj && priceRangeObj.getRangeId()!= null && priceRangeObj.getRangeId()!= 0)  where += " and t_wantHourseInfo.priceRangeObj=" + priceRangeObj.getRangeId();
+    	if(null != userObj &&  userObj.getUser_name() != null && !"".equals(userObj.getUser_name())) {
+            where += " and t_wantHourseInfo.userObj='" + userObj.getUser_name() + "'";
+        }
+    	if(!"".equals(title)) {
+            where = where + " and t_wantHourseInfo.title like '%" + title + "%'";
+        }
+    	if(null != position && position.getAreaId()!= null && position.getAreaId()!= 0) {
+            where += " and t_wantHourseInfo.position=" + position.getAreaId();
+        }
+    	if(null != hourseTypeObj && hourseTypeObj.getTypeId()!= null && hourseTypeObj.getTypeId()!= 0) {
+            where += " and t_wantHourseInfo.hourseTypeObj=" + hourseTypeObj.getTypeId();
+        }
+    	if(null != priceRangeObj && priceRangeObj.getRangeId()!= null && priceRangeObj.getRangeId()!= 0) {
+            where += " and t_wantHourseInfo.priceRangeObj=" + priceRangeObj.getRangeId();
+        }
         recordNumber = wantHourseInfoMapper.queryWantHourseInfoCount(where);
         int mod = recordNumber % this.rows;
         totalPage = recordNumber / this.rows;
-        if(mod != 0) totalPage++;
+        if(mod != 0) {
+            totalPage++;
+        }
     }
 
     /*根据主键获取求租信息记录*/
     public WantHourseInfo getWantHourseInfo(int wantHourseId) throws Exception  {
-        WantHourseInfo wantHourseInfo = wantHourseInfoMapper.getWantHourseInfo(wantHourseId);
-        return wantHourseInfo;
+        return wantHourseInfoMapper.getWantHourseInfo(wantHourseId);
     }
 
     /*更新求租信息记录*/

@@ -1,5 +1,8 @@
 package com.wanjiaxin.utils;
 
+/**
+ * @author 1035
+ */
 public class UserException extends RuntimeException {
 
 	/**

@@ -7,12 +7,16 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 
+/**
+ * @author 1035
+ */
 @Service
 public class NewsInfoService {
 
 	@Resource NewsInfoMapper newsInfoMapper;
     /*每页显示记录数目*/
-    private int rows = 10;;
+    private int rows = 10;
+
     public int getRows() {
 		return rows;
 	}
@@ -46,8 +50,12 @@ public class NewsInfoService {
     /*按照查询条件分页查询新闻公告记录*/
     public ArrayList<NewsInfo> queryNewsInfo(String newsTitle,String newsDate,int currentPage) throws Exception { 
      	String where = "where 1=1";
-    	if(!newsTitle.equals("")) where = where + " and t_newsInfo.newsTitle like '%" + newsTitle + "%'";
-    	if(!newsDate.equals("")) where = where + " and t_newsInfo.newsDate like '%" + newsDate + "%'";
+    	if(!"".equals(newsTitle)) {
+            where = where + " and t_newsInfo.newsTitle like '%" + newsTitle + "%'";
+        }
+    	if(!"".equals(newsDate)) {
+            where = where + " and t_newsInfo.newsDate like '%" + newsDate + "%'";
+        }
     	int startIndex = (currentPage-1) * this.rows;
     	return newsInfoMapper.queryNewsInfo(where, startIndex, this.rows);
     }
@@ -55,8 +63,12 @@ public class NewsInfoService {
     /*按照查询条件查询所有记录*/
     public ArrayList<NewsInfo> queryNewsInfo(String newsTitle,String newsDate) throws Exception  { 
      	String where = "where 1=1";
-    	if(!newsTitle.equals("")) where = where + " and t_newsInfo.newsTitle like '%" + newsTitle + "%'";
-    	if(!newsDate.equals("")) where = where + " and t_newsInfo.newsDate like '%" + newsDate + "%'";
+    	if(!"".equals(newsTitle)) {
+            where = where + " and t_newsInfo.newsTitle like '%" + newsTitle + "%'";
+        }
+    	if(!"".equals(newsDate)) {
+            where = where + " and t_newsInfo.newsDate like '%" + newsDate + "%'";
+        }
     	return newsInfoMapper.queryNewsInfoList(where);
     }
 
@@ -68,18 +80,23 @@ public class NewsInfoService {
     /*当前查询条件下计算总的页数和记录数*/
     public void queryTotalPageAndRecordNumber(String newsTitle,String newsDate) throws Exception {
      	String where = "where 1=1";
-    	if(!newsTitle.equals("")) where = where + " and t_newsInfo.newsTitle like '%" + newsTitle + "%'";
-    	if(!newsDate.equals("")) where = where + " and t_newsInfo.newsDate like '%" + newsDate + "%'";
+    	if(!"".equals(newsTitle)) {
+            where = where + " and t_newsInfo.newsTitle like '%" + newsTitle + "%'";
+        }
+    	if(!"".equals(newsDate)) {
+            where = where + " and t_newsInfo.newsDate like '%" + newsDate + "%'";
+        }
         recordNumber = newsInfoMapper.queryNewsInfoCount(where);
         int mod = recordNumber % this.rows;
         totalPage = recordNumber / this.rows;
-        if(mod != 0) totalPage++;
+        if(mod != 0) {
+            totalPage++;
+        }
     }
 
     /*根据主键获取新闻公告记录*/
     public NewsInfo getNewsInfo(int newsId) throws Exception  {
-        NewsInfo newsInfo = newsInfoMapper.getNewsInfo(newsId);
-        return newsInfo;
+        return newsInfoMapper.getNewsInfo(newsId);
     }
 
     /*更新新闻公告记录*/

@@ -6,6 +6,9 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
+/**
+ * @author 1035
+ */
 @Service
 public class RentService {
     @Resource

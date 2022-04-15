@@ -49,7 +49,6 @@ public class EncryptUtil {
      * ʹ��MessageDigest���е�����ܣ������룩
      * @param res �����ܵ��ı�
      * @param algorithm �����㷨����
-     * @return
      */
     private String messageDigest(String res,String algorithm){
         try {
@@ -145,8 +144,9 @@ public class EncryptUtil {
     }
     /**��16����ת��Ϊ������*/
     public static byte[] parseHexStr2Byte(String hexStr) {
-        if (hexStr.length() < 1)
+        if (hexStr.length() < 1) {
             return null;
+        }
         byte[] result = new byte[hexStr.length()/2];
         for (int i = 0;i< hexStr.length()/2; i++) {
             int high = Integer.parseInt(hexStr.substring(i*2, i*2+1), 16);

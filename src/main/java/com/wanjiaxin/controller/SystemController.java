@@ -29,6 +29,9 @@ import java.io.PrintWriter;
 import java.util.Random;
 
 
+/**
+ * @author 1035
+ */
 @Controller
 public class SystemController { 
 	
@@ -58,8 +61,8 @@ public class SystemController {
 	}
 	//前台用户登录
 	@RequestMapping(value="/frontLogin",method=RequestMethod.POST)
-	public String frontLogin(@RequestParam("username")String username, @RequestParam("password")String password,
-							 String verification, Model model, HttpServletResponse response, HttpSession session) throws Exception {
+	public String frontLogin(@RequestParam("username") String username, @RequestParam("password") String password,
+							 String verification, Model model, HttpSession session) throws Exception {
 		String text = (String) session.getAttribute("imageCode");
 		System.out.println(username+"======"+password+"=========="+verification);
 		if(!text.equals(verification)) {
@@ -68,7 +71,7 @@ public class SystemController {
 		}
 		UserInfo user =userInfoService.checkLogin(username,password);
 		System.out.println(user.toString()+"========");
-		if (user == null) {
+		if (user == null ||user.getRealName() == null) {
 			model.addAttribute("msg","用户名或密码错误");
 			return "user/login";
 		}
@@ -123,16 +126,26 @@ public class SystemController {
 	
 	@RequestMapping(value="/changePassword",method=RequestMethod.POST)
 	public String ChangePassword(String oldPassword,String newPassword,String newPassword2,HttpServletRequest request,HttpSession session) throws Exception { 
-		if(oldPassword.equals("")) throw new UserException("请输入旧密码！");
-		if(newPassword.equals("")) throw new UserException("请输入新密码！");
-		if(!newPassword.equals(newPassword2)) throw new UserException("两次新密码输入不一致"); 
+		if("".equals(oldPassword)) {
+			throw new UserException("请输入旧密码！");
+		}
+		if("".equals(newPassword)) {
+			throw new UserException("请输入新密码！");
+		}
+		if(!newPassword.equals(newPassword2)) {
+			throw new UserException("两次新密码输入不一致");
+		}
 		
 		String username = (String)session.getAttribute("username");
-		if(username == null) throw new UserException("session会话超时，请重新登录系统!");
+		if(username == null) {
+			throw new UserException("session会话超时，请重新登录系统!");
+		}
 		 
 		
 		Admin admin = adminService.findAdminByUserName(username); 
-		if(!admin.getPassword().equals(oldPassword)) throw new UserException("输入的旧密码不正确!");
+		if(!admin.getPassword().equals(oldPassword)) {
+			throw new UserException("输入的旧密码不正确!");
+		}
 		
 		try { 
 			adminService.changePassword(username,newPassword);

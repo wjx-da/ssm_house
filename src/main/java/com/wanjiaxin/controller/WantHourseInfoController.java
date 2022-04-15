@@ -94,9 +94,15 @@ public class WantHourseInfoController extends BaseController {
 	/*ajax方式按照查询条件分页查询求租信息信息*/
 	@RequestMapping(value = { "/list" }, method = {RequestMethod.GET,RequestMethod.POST})
 	public void list(@ModelAttribute("userObj") UserInfo userObj,String title,@ModelAttribute("position") AreaInfo position,@ModelAttribute("hourseTypeObj") HourseType hourseTypeObj,@ModelAttribute("priceRangeObj") PriceRange priceRangeObj,Integer page,Integer rows, Model model, HttpServletRequest request,HttpServletResponse response) throws Exception {
-		if (page==null || page == 0) page = 1;
-		if (title == null) title = "";
-		if(rows != 0)wantHourseInfoService.setRows(rows);
+		if (page==null || page == 0) {
+			page = 1;
+		}
+		if (title == null) {
+			title = "";
+		}
+		if(rows != 0) {
+			wantHourseInfoService.setRows(rows);
+		}
 		List<WantHourseInfo> wantHourseInfoList = wantHourseInfoService.queryWantHourseInfo(userObj, title, position, hourseTypeObj, priceRangeObj, page);
 	    /*计算总的页数和总的记录数*/
 	    wantHourseInfoService.queryTotalPageAndRecordNumber(userObj, title, position, hourseTypeObj, priceRangeObj);
@@ -148,8 +154,12 @@ public class WantHourseInfoController extends BaseController {
 			userObj = (UserInfo) session.getAttribute("user");
 		}
 		System.out.println(userObj.toString());
-		if (currentPage==null || currentPage == 0) currentPage = 1;
-		if (title == null) title = "";
+		if (currentPage==null || currentPage == 0) {
+			currentPage = 1;
+		}
+		if (title == null) {
+			title = "";
+		}
 		List<WantHourseInfo> wantHourseInfoList = wantHourseInfoService.queryWantHourseInfo(userObj, title, position, hourseTypeObj, priceRangeObj, currentPage);
 	    /*计算总的页数和总的记录数*/
 	    wantHourseInfoService.queryTotalPageAndRecordNumber(userObj, title, position, hourseTypeObj, priceRangeObj);
@@ -268,7 +278,9 @@ public class WantHourseInfoController extends BaseController {
 	/*按照查询条件导出求租信息信息到Excel*/
 	@RequestMapping(value = { "/OutToExcel" }, method = {RequestMethod.GET,RequestMethod.POST})
 	public void OutToExcel(@ModelAttribute("userObj") UserInfo userObj,String title,@ModelAttribute("position") AreaInfo position,@ModelAttribute("hourseTypeObj") HourseType hourseTypeObj,@ModelAttribute("priceRangeObj") PriceRange priceRangeObj, Model model, HttpServletRequest request,HttpServletResponse response) throws Exception {
-        if(title == null) title = "";
+        if(title == null) {
+			title = "";
+		}
         List<WantHourseInfo> wantHourseInfoList = wantHourseInfoService.queryWantHourseInfo(userObj,title,position,hourseTypeObj,priceRangeObj);
         ExportExcelUtil ex = new ExportExcelUtil();
         String _title = "WantHourseInfo信息记录"; 

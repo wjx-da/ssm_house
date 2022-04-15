@@ -7,12 +7,16 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 
+/**
+ * @author 1035
+ */
 @Service
 public class HourseTypeService {
 
 	@Resource HourseTypeMapper hourseTypeMapper;
     /*每页显示记录数目*/
-    private int rows = 10;;
+    private int rows = 10;
+
     public int getRows() {
 		return rows;
 	}
@@ -67,13 +71,14 @@ public class HourseTypeService {
         recordNumber = hourseTypeMapper.queryHourseTypeCount(where);
         int mod = recordNumber % this.rows;
         totalPage = recordNumber / this.rows;
-        if(mod != 0) totalPage++;
+        if(mod != 0) {
+            totalPage++;
+        }
     }
 
     /*根据主键获取房屋类别记录*/
     public HourseType getHourseType(int typeId) throws Exception  {
-        HourseType hourseType = hourseTypeMapper.getHourseType(typeId);
-        return hourseType;
+        return hourseTypeMapper.getHourseType(typeId);
     }
 
     /*更新房屋类别记录*/

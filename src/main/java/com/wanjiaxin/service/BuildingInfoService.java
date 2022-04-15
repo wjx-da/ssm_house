@@ -8,12 +8,16 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 
+/**
+ * @author 1035
+ */
 @Service
 public class BuildingInfoService {
 
 	@Resource BuildingInfoMapper buildingInfoMapper;
     /*每页显示记录数目*/
-    private int rows = 10;;
+    private int rows = 10;
+
     public int getRows() {
 		return rows;
 	}
@@ -47,8 +51,12 @@ public class BuildingInfoService {
     /*按照查询条件分页查询楼盘信息记录*/
     public ArrayList<BuildingInfo> queryBuildingInfo(AreaInfo areaObj,String buildingName,int currentPage) throws Exception { 
      	String where = "where 1=1";
-    	if(null != areaObj && areaObj.getAreaId()!= null && areaObj.getAreaId()!= 0)  where += " and t_buildingInfo.areaObj=" + areaObj.getAreaId();
-    	if(!buildingName.equals("")) where = where + " and t_buildingInfo.buildingName like '%" + buildingName + "%'";
+    	if(null != areaObj && areaObj.getAreaId()!= null && areaObj.getAreaId()!= 0) {
+            where += " and t_buildingInfo.areaObj=" + areaObj.getAreaId();
+        }
+    	if(!"".equals(buildingName)) {
+            where = where + " and t_buildingInfo.buildingName like '%" + buildingName + "%'";
+        }
     	int startIndex = (currentPage-1) * this.rows;
     	return buildingInfoMapper.queryBuildingInfo(where, startIndex, this.rows);
     }
@@ -56,8 +64,12 @@ public class BuildingInfoService {
     /*按照查询条件查询所有记录*/
     public ArrayList<BuildingInfo> queryBuildingInfo(AreaInfo areaObj,String buildingName) throws Exception  { 
      	String where = "where 1=1";
-    	if(null != areaObj && areaObj.getAreaId()!= null && areaObj.getAreaId()!= 0)  where += " and t_buildingInfo.areaObj=" + areaObj.getAreaId();
-    	if(!buildingName.equals("")) where = where + " and t_buildingInfo.buildingName like '%" + buildingName + "%'";
+    	if(null != areaObj && areaObj.getAreaId()!= null && areaObj.getAreaId()!= 0) {
+            where += " and t_buildingInfo.areaObj=" + areaObj.getAreaId();
+        }
+    	if(!"".equals(buildingName)) {
+            where = where + " and t_buildingInfo.buildingName like '%" + buildingName + "%'";
+        }
     	return buildingInfoMapper.queryBuildingInfoList(where);
     }
 
@@ -69,12 +81,18 @@ public class BuildingInfoService {
     /*当前查询条件下计算总的页数和记录数*/
     public void queryTotalPageAndRecordNumber(AreaInfo areaObj,String buildingName) throws Exception {
      	String where = "where 1=1";
-    	if(null != areaObj && areaObj.getAreaId()!= null && areaObj.getAreaId()!= 0)  where += " and t_buildingInfo.areaObj=" + areaObj.getAreaId();
-    	if(!buildingName.equals("")) where = where + " and t_buildingInfo.buildingName like '%" + buildingName + "%'";
+    	if(null != areaObj && areaObj.getAreaId()!= null && areaObj.getAreaId()!= 0) {
+            where += " and t_buildingInfo.areaObj=" + areaObj.getAreaId();
+        }
+    	if(!"".equals(buildingName)) {
+            where = where + " and t_buildingInfo.buildingName like '%" + buildingName + "%'";
+        }
         recordNumber = buildingInfoMapper.queryBuildingInfoCount(where);
         int mod = recordNumber % this.rows;
         totalPage = recordNumber / this.rows;
-        if(mod != 0) totalPage++;
+        if(mod != 0) {
+            totalPage++;
+        }
     }
 
     /*根据主键获取楼盘信息记录*/

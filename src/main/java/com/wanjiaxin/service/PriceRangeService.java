@@ -7,12 +7,16 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 
+/**
+ * @author 1035
+ */
 @Service
 public class PriceRangeService {
 
 	@Resource PriceRangeMapper priceRangeMapper;
     /*每页显示记录数目*/
-    private int rows = 10;;
+    private int rows = 10;
+
     public int getRows() {
 		return rows;
 	}
@@ -67,13 +71,14 @@ public class PriceRangeService {
         recordNumber = priceRangeMapper.queryPriceRangeCount(where);
         int mod = recordNumber % this.rows;
         totalPage = recordNumber / this.rows;
-        if(mod != 0) totalPage++;
+        if(mod != 0) {
+            totalPage++;
+        }
     }
 
     /*根据主键获取租金范围记录*/
     public PriceRange getPriceRange(int rangeId) throws Exception  {
-        PriceRange priceRange = priceRangeMapper.getPriceRange(rangeId);
-        return priceRange;
+        return priceRangeMapper.getPriceRange(rangeId);
     }
 
     /*更新租金范围记录*/

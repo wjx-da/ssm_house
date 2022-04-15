@@ -10,12 +10,16 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 
+/**
+ * @author 1035
+ */
 @Service
 public class HourseService {
 
 	@Resource HourseMapper hourseMapper;
     /*每页显示记录数目*/
-    private int rows = 10;;
+    private int rows = 10;
+
     public int getRows() {
 		return rows;
 	}
@@ -49,13 +53,27 @@ public class HourseService {
     /*按照查询条件分页查询房屋信息记录*/
     public ArrayList<Hourse> queryHourse(String hourseName,BuildingInfo buildingObj,HourseType hourseTypeObj,PriceRange priceRangeObj,String madeYear,String connectPerson,String connectPhone,int currentPage) throws Exception { 
      	String where = "where 1=1";
-    	if(!hourseName.equals("")) where = where + " and t_hourse.hourseName like '%" + hourseName + "%'";
-    	if(null != buildingObj && buildingObj.getBuildingId()!= null && buildingObj.getBuildingId()!= 0)  where += " and t_hourse.buildingObj=" + buildingObj.getBuildingId();
-    	if(null != hourseTypeObj && hourseTypeObj.getTypeId()!= null && hourseTypeObj.getTypeId()!= 0)  where += " and t_hourse.hourseTypeObj=" + hourseTypeObj.getTypeId();
-    	if(null != priceRangeObj && priceRangeObj.getRangeId()!= null && priceRangeObj.getRangeId()!= 0)  where += " and t_hourse.priceRangeObj=" + priceRangeObj.getRangeId();
-    	if(!madeYear.equals("")) where = where + " and t_hourse.madeYear like '%" + madeYear + "%'";
-    	if(!connectPerson.equals("")) where = where + " and t_hourse.connectPerson like '%" + connectPerson + "%'";
-    	if(!connectPhone.equals("")) where = where + " and t_hourse.connectPhone like '%" + connectPhone + "%'";
+    	if(!"".equals(hourseName)) {
+            where = where + " and t_hourse.hourseName like '%" + hourseName + "%'";
+        }
+    	if(null != buildingObj && buildingObj.getBuildingId()!= null && buildingObj.getBuildingId()!= 0) {
+            where += " and t_hourse.buildingObj=" + buildingObj.getBuildingId();
+        }
+    	if(null != hourseTypeObj && hourseTypeObj.getTypeId()!= null && hourseTypeObj.getTypeId()!= 0) {
+            where += " and t_hourse.hourseTypeObj=" + hourseTypeObj.getTypeId();
+        }
+    	if(null != priceRangeObj && priceRangeObj.getRangeId()!= null && priceRangeObj.getRangeId()!= 0) {
+            where += " and t_hourse.priceRangeObj=" + priceRangeObj.getRangeId();
+        }
+    	if(!"".equals(madeYear)) {
+            where = where + " and t_hourse.madeYear like '%" + madeYear + "%'";
+        }
+    	if(!"".equals(connectPerson)) {
+            where = where + " and t_hourse.connectPerson like '%" + connectPerson + "%'";
+        }
+    	if(!"".equals(connectPhone)) {
+            where = where + " and t_hourse.connectPhone like '%" + connectPhone + "%'";
+        }
     	int startIndex = (currentPage-1) * this.rows;
     	return hourseMapper.queryHourse(where, startIndex, this.rows);
     }
@@ -63,13 +81,27 @@ public class HourseService {
     /*按照查询条件查询所有记录*/
     public ArrayList<Hourse> queryHourse(String hourseName,BuildingInfo buildingObj,HourseType hourseTypeObj,PriceRange priceRangeObj,String madeYear,String connectPerson,String connectPhone) throws Exception  { 
      	String where = "where 1=1";
-    	if(!hourseName.equals("")) where = where + " and t_hourse.hourseName like '%" + hourseName + "%'";
-    	if(null != buildingObj && buildingObj.getBuildingId()!= null && buildingObj.getBuildingId()!= 0)  where += " and t_hourse.buildingObj=" + buildingObj.getBuildingId();
-    	if(null != hourseTypeObj && hourseTypeObj.getTypeId()!= null && hourseTypeObj.getTypeId()!= 0)  where += " and t_hourse.hourseTypeObj=" + hourseTypeObj.getTypeId();
-    	if(null != priceRangeObj && priceRangeObj.getRangeId()!= null && priceRangeObj.getRangeId()!= 0)  where += " and t_hourse.priceRangeObj=" + priceRangeObj.getRangeId();
-    	if(!madeYear.equals("")) where = where + " and t_hourse.madeYear like '%" + madeYear + "%'";
-    	if(!connectPerson.equals("")) where = where + " and t_hourse.connectPerson like '%" + connectPerson + "%'";
-    	if(!connectPhone.equals("")) where = where + " and t_hourse.connectPhone like '%" + connectPhone + "%'";
+    	if(!"".equals(hourseName)) {
+            where = where + " and t_hourse.hourseName like '%" + hourseName + "%'";
+        }
+    	if(null != buildingObj && buildingObj.getBuildingId()!= null && buildingObj.getBuildingId()!= 0) {
+            where += " and t_hourse.buildingObj=" + buildingObj.getBuildingId();
+        }
+    	if(null != hourseTypeObj && hourseTypeObj.getTypeId()!= null && hourseTypeObj.getTypeId()!= 0) {
+            where += " and t_hourse.hourseTypeObj=" + hourseTypeObj.getTypeId();
+        }
+    	if(null != priceRangeObj && priceRangeObj.getRangeId()!= null && priceRangeObj.getRangeId()!= 0) {
+            where += " and t_hourse.priceRangeObj=" + priceRangeObj.getRangeId();
+        }
+    	if(!"".equals(madeYear)) {
+            where = where + " and t_hourse.madeYear like '%" + madeYear + "%'";
+        }
+    	if(!"".equals(connectPerson)) {
+            where = where + " and t_hourse.connectPerson like '%" + connectPerson + "%'";
+        }
+    	if(!"".equals(connectPhone)) {
+            where = where + " and t_hourse.connectPhone like '%" + connectPhone + "%'";
+        }
     	return hourseMapper.queryHourseList(where);
     }
 
@@ -81,23 +113,38 @@ public class HourseService {
     /*当前查询条件下计算总的页数和记录数*/
     public void queryTotalPageAndRecordNumber(String hourseName,BuildingInfo buildingObj,HourseType hourseTypeObj,PriceRange priceRangeObj,String madeYear,String connectPerson,String connectPhone) throws Exception {
      	String where = "where 1=1";
-    	if(!hourseName.equals("")) where = where + " and t_hourse.hourseName like '%" + hourseName + "%'";
-    	if(null != buildingObj && buildingObj.getBuildingId()!= null && buildingObj.getBuildingId()!= 0)  where += " and t_hourse.buildingObj=" + buildingObj.getBuildingId();
-    	if(null != hourseTypeObj && hourseTypeObj.getTypeId()!= null && hourseTypeObj.getTypeId()!= 0)  where += " and t_hourse.hourseTypeObj=" + hourseTypeObj.getTypeId();
-    	if(null != priceRangeObj && priceRangeObj.getRangeId()!= null && priceRangeObj.getRangeId()!= 0)  where += " and t_hourse.priceRangeObj=" + priceRangeObj.getRangeId();
-    	if(!madeYear.equals("")) where = where + " and t_hourse.madeYear like '%" + madeYear + "%'";
-    	if(!connectPerson.equals("")) where = where + " and t_hourse.connectPerson like '%" + connectPerson + "%'";
-    	if(!connectPhone.equals("")) where = where + " and t_hourse.connectPhone like '%" + connectPhone + "%'";
+    	if(!"".equals(hourseName)) {
+            where = where + " and t_hourse.hourseName like '%" + hourseName + "%'";
+        }
+    	if(null != buildingObj && buildingObj.getBuildingId()!= null && buildingObj.getBuildingId()!= 0) {
+            where += " and t_hourse.buildingObj=" + buildingObj.getBuildingId();
+        }
+    	if(null != hourseTypeObj && hourseTypeObj.getTypeId()!= null && hourseTypeObj.getTypeId()!= 0) {
+            where += " and t_hourse.hourseTypeObj=" + hourseTypeObj.getTypeId();
+        }
+    	if(null != priceRangeObj && priceRangeObj.getRangeId()!= null && priceRangeObj.getRangeId()!= 0) {
+            where += " and t_hourse.priceRangeObj=" + priceRangeObj.getRangeId();
+        }
+    	if(!"".equals(madeYear)) {
+            where = where + " and t_hourse.madeYear like '%" + madeYear + "%'";
+        }
+    	if(!"".equals(connectPerson)) {
+            where = where + " and t_hourse.connectPerson like '%" + connectPerson + "%'";
+        }
+    	if(!"".equals(connectPhone)) {
+            where = where + " and t_hourse.connectPhone like '%" + connectPhone + "%'";
+        }
         recordNumber = hourseMapper.queryHourseCount(where);
         int mod = recordNumber % this.rows;
         totalPage = recordNumber / this.rows;
-        if(mod != 0) totalPage++;
+        if(mod != 0) {
+            totalPage++;
+        }
     }
 
     /*根据主键获取房屋信息记录*/
     public Hourse getHourse(int hourseId) throws Exception  {
-        Hourse hourse = hourseMapper.getHourse(hourseId);
-        return hourse;
+        return hourseMapper.getHourse(hourseId);
     }
 
     /*更新房屋信息记录*/

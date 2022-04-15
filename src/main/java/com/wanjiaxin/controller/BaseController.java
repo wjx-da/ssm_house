@@ -19,6 +19,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
+/**
+ * @author 1035
+ */
 public class BaseController {
 	
 	
@@ -38,7 +41,7 @@ public class BaseController {
 			@Override
 			public void setAsText(String text) {
 				Integer value = null;
-				if (null != text && !text.equals("")) {  
+				if (null != text && !"".equals(text)) {
 						try {
 							value = Integer.valueOf(text);
 						} catch(Exception ex)  { 
@@ -59,7 +62,7 @@ public class BaseController {
 			@Override
 			public void setAsText(String text)  {
 				Float value = null;
-				if (null != text && !text.equals("")) {
+				if (null != text && !"".equals(text)) {
 					try {
 						value = Float.valueOf(text);
 					} catch (Exception e) { 
@@ -86,8 +89,9 @@ public class BaseController {
         String photoBookRealPathDir = request.getSession().getServletContext().getRealPath(photoBookPathDir);     
         /**根据真实路径创建目录**/    
         File photoBookSaveFile = new File(photoBookRealPathDir);     
-        if(!photoBookSaveFile.exists())     
-        	photoBookSaveFile.mkdirs();           
+        if(!photoBookSaveFile.exists()) {
+			photoBookSaveFile.mkdirs();
+		}
         /**页面控件的文件流**/    
         MultipartFile multipartFile_photoBook = multipartRequest.getFile(fileKeyName);    
         if(!multipartFile_photoBook.isEmpty()) {
@@ -95,8 +99,9 @@ public class BaseController {
             String suffix = multipartFile_photoBook.getOriginalFilename().substring  
                             (multipartFile_photoBook.getOriginalFilename().lastIndexOf("."));  
             String smallSuffix = suffix.toLowerCase();
-            if(!smallSuffix.equals(".jpg") && !smallSuffix.equals(".gif") && !smallSuffix.equals(".png") )
-            	throw new UserException("图片格式不正确！");
+            if(!".jpg".equals(smallSuffix) && !".gif".equals(smallSuffix) && !".png".equals(smallSuffix) ) {
+				throw new UserException("图片格式不正确！");
+			}
             /**使用UUID生成文件名称**/    
             String photoBookFileName = UUID.randomUUID().toString()+ suffix;//构建文件名称     
             //String logImageName = multipartFile.getOriginalFilename();  
@@ -128,8 +133,9 @@ public class BaseController {
         String photoBookRealPathDir = request.getSession().getServletContext().getRealPath(photoBookPathDir);     
         /**根据真实路径创建目录**/    
         File photoBookSaveFile = new File(photoBookRealPathDir);     
-        if(!photoBookSaveFile.exists())     
-        	photoBookSaveFile.mkdirs();           
+        if(!photoBookSaveFile.exists()) {
+			photoBookSaveFile.mkdirs();
+		}
         /**页面控件的文件流**/    
         MultipartFile multipartFile_photoBook = multipartRequest.getFile(fileKeyName);    
         if(!multipartFile_photoBook.isEmpty()) {

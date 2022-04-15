@@ -13,7 +13,8 @@ public class GuestBookService {
 
 	@Resource GuestBookMapper guestBookMapper;
     /*每页显示记录数目*/
-    private int rows = 10;;
+    private int rows = 10;
+
     public int getRows() {
 		return rows;
 	}
@@ -47,8 +48,12 @@ public class GuestBookService {
     /*按照查询条件分页查询留言信息记录*/
     public ArrayList<GuestBook> queryGuestBook(String title,UserInfo userObj,int currentPage) throws Exception { 
      	String where = "where 1=1";
-    	if(!title.equals("")) where = where + " and t_guestBook.title like '%" + title + "%'";
-    	if(null != userObj &&  userObj.getUser_name() != null  && !userObj.getUser_name().equals(""))  where += " and t_guestBook.userObj='" + userObj.getUser_name() + "'";
+    	if(!"".equals(title)) {
+            where = where + " and t_guestBook.title like '%" + title + "%'";
+        }
+    	if(null != userObj &&  userObj.getUser_name() != null  && !"".equals(userObj.getUser_name())) {
+            where += " and t_guestBook.userObj='" + userObj.getUser_name() + "'";
+        }
     	int startIndex = (currentPage-1) * this.rows;
     	return guestBookMapper.queryGuestBook(where, startIndex, this.rows);
     }
@@ -56,8 +61,12 @@ public class GuestBookService {
     /*按照查询条件查询所有记录*/
     public ArrayList<GuestBook> queryGuestBook(String title,UserInfo userObj) throws Exception  { 
      	String where = "where 1=1";
-    	if(!title.equals("")) where = where + " and t_guestBook.title like '%" + title + "%'";
-    	if(null != userObj &&  userObj.getUser_name() != null && !userObj.getUser_name().equals(""))  where += " and t_guestBook.userObj='" + userObj.getUser_name() + "'";
+    	if(!"".equals(title)) {
+            where = where + " and t_guestBook.title like '%" + title + "%'";
+        }
+    	if(null != userObj &&  userObj.getUser_name() != null && !"".equals(userObj.getUser_name())) {
+            where += " and t_guestBook.userObj='" + userObj.getUser_name() + "'";
+        }
     	return guestBookMapper.queryGuestBookList(where);
     }
 
@@ -69,18 +78,23 @@ public class GuestBookService {
     /*当前查询条件下计算总的页数和记录数*/
     public void queryTotalPageAndRecordNumber(String title,UserInfo userObj) throws Exception {
      	String where = "where 1=1";
-    	if(!title.equals("")) where = where + " and t_guestBook.title like '%" + title + "%'";
-    	if(null != userObj &&  userObj.getUser_name() != null && !userObj.getUser_name().equals(""))  where += " and t_guestBook.userObj='" + userObj.getUser_name() + "'";
+    	if(!"".equals(title)) {
+            where = where + " and t_guestBook.title like '%" + title + "%'";
+        }
+    	if(null != userObj &&  userObj.getUser_name() != null && !"".equals(userObj.getUser_name())) {
+            where += " and t_guestBook.userObj='" + userObj.getUser_name() + "'";
+        }
         recordNumber = guestBookMapper.queryGuestBookCount(where);
         int mod = recordNumber % this.rows;
         totalPage = recordNumber / this.rows;
-        if(mod != 0) totalPage++;
+        if(mod != 0) {
+            totalPage++;
+        }
     }
 
     /*根据主键获取留言信息记录*/
     public GuestBook getGuestBook(int guestBookId) throws Exception  {
-        GuestBook guestBook = guestBookMapper.getGuestBook(guestBookId);
-        return guestBook;
+        return guestBookMapper.getGuestBook(guestBookId);
     }
 
     /*更新留言信息记录*/

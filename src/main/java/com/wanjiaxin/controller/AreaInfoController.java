@@ -26,7 +26,9 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
-//AreaInfo管理控制层
+/**
+ * @author 1035
+ */ //AreaInfo管理控制层
 @Controller
 @RequestMapping("/AreaInfo")
 public class AreaInfoController extends BaseController {

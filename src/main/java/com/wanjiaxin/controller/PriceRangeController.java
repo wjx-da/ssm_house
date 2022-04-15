@@ -26,7 +26,9 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
-//PriceRange管理控制层
+/**
+ * @author 1035
+ */ //PriceRange管理控制层
 @Controller
 @RequestMapping("/PriceRange")
 public class PriceRangeController extends BaseController {
@@ -64,8 +66,12 @@ public class PriceRangeController extends BaseController {
 	/*ajax方式按照查询条件分页查询租金范围信息*/
 	@RequestMapping(value = { "/list" }, method = {RequestMethod.GET,RequestMethod.POST})
 	public void list(Integer page,Integer rows, Model model, HttpServletRequest request,HttpServletResponse response) throws Exception {
-		if (page==null || page == 0) page = 1;
-		if(rows != 0)priceRangeService.setRows(rows);
+		if (page==null || page == 0) {
+			page = 1;
+		}
+		if(rows != 0) {
+			priceRangeService.setRows(rows);
+		}
 		List<PriceRange> priceRangeList = priceRangeService.queryPriceRange(page);
 	    /*计算总的页数和总的记录数*/
 	    priceRangeService.queryTotalPageAndRecordNumber();
@@ -110,7 +116,9 @@ public class PriceRangeController extends BaseController {
 	/*前台按照查询条件分页查询租金范围信息*/
 	@RequestMapping(value = { "/frontlist" }, method = {RequestMethod.GET,RequestMethod.POST})
 	public String frontlist(Integer currentPage, Model model, HttpServletRequest request) throws Exception  {
-		if (currentPage==null || currentPage == 0) currentPage = 1;
+		if (currentPage==null || currentPage == 0) {
+			currentPage = 1;
+		}
 		List<PriceRange> priceRangeList = priceRangeService.queryPriceRange(currentPage);
 	    /*计算总的页数和总的记录数*/
 	    priceRangeService.queryTotalPageAndRecordNumber();

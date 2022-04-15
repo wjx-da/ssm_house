@@ -71,9 +71,15 @@ public class GuestBookController extends BaseController {
 	/*ajax方式按照查询条件分页查询留言信息信息*/
 	@RequestMapping(value = { "/list" }, method = {RequestMethod.GET,RequestMethod.POST})
 	public void list(String title,@ModelAttribute("userObj") UserInfo userObj,Integer page,Integer rows, Model model, HttpServletRequest request,HttpServletResponse response) throws Exception {
-		if (page==null || page == 0) page = 1;
-		if (title == null) title = "";
-		if(rows != 0)guestBookService.setRows(rows);
+		if (page==null || page == 0) {
+			page = 1;
+		}
+		if (title == null) {
+			title = "";
+		}
+		if(rows != 0) {
+			guestBookService.setRows(rows);
+		}
 		List<GuestBook> guestBookList = guestBookService.queryGuestBook(title, userObj, page);
 	    /*计算总的页数和总的记录数*/
 	    guestBookService.queryTotalPageAndRecordNumber(title, userObj);
@@ -118,8 +124,12 @@ public class GuestBookController extends BaseController {
 	/*前台按照查询条件分页查询留言信息信息*/
 	@RequestMapping(value = { "/frontlist" }, method = {RequestMethod.GET,RequestMethod.POST})
 	public String frontlist(String title,@ModelAttribute("userObj") UserInfo userObj,Integer currentPage, Model model, HttpServletRequest request) throws Exception  {
-		if (currentPage==null || currentPage == 0) currentPage = 1;
-		if (title == null) title = "";
+		if (currentPage==null || currentPage == 0) {
+			currentPage = 1;
+		}
+		if (title == null) {
+			title = "";
+		}
 		List<GuestBook> guestBookList = guestBookService.queryGuestBook(title, userObj, currentPage);
 	    /*计算总的页数和总的记录数*/
 	    guestBookService.queryTotalPageAndRecordNumber(title, userObj);
@@ -223,7 +233,9 @@ public class GuestBookController extends BaseController {
 	/*按照查询条件导出留言信息信息到Excel*/
 	@RequestMapping(value = { "/OutToExcel" }, method = {RequestMethod.GET,RequestMethod.POST})
 	public void OutToExcel(String title,@ModelAttribute("userObj") UserInfo userObj, Model model, HttpServletRequest request,HttpServletResponse response) throws Exception {
-        if(title == null) title = "";
+        if(title == null) {
+			title = "";
+		}
         List<GuestBook> guestBookList = guestBookService.queryGuestBook(title,userObj);
         ExportExcelUtil ex = new ExportExcelUtil();
         String _title = "GuestBook信息记录"; 

@@ -26,7 +26,9 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
-//BuildingInfo管理控制层
+/**
+ * @author 1035
+ */ //BuildingInfo管理控制层
 @Controller
 @RequestMapping("/BuildingInfo")
 public class BuildingInfoController extends BaseController {
@@ -79,9 +81,15 @@ public class BuildingInfoController extends BaseController {
 	/*ajax方式按照查询条件分页查询楼盘信息信息*/
 	@RequestMapping(value = { "/list" }, method = {RequestMethod.GET,RequestMethod.POST})
 	public void list(@ModelAttribute("areaObj") AreaInfo areaObj,String buildingName,Integer page,Integer rows, Model model, HttpServletRequest request,HttpServletResponse response) throws Exception {
-		if (page==null || page == 0) page = 1;
-		if (buildingName == null) buildingName = "";
-		if(rows != 0)buildingInfoService.setRows(rows);
+		if (page==null || page == 0) {
+			page = 1;
+		}
+		if (buildingName == null) {
+			buildingName = "";
+		}
+		if(rows != 0) {
+			buildingInfoService.setRows(rows);
+		}
 		List<BuildingInfo> buildingInfoList = buildingInfoService.queryBuildingInfo(areaObj, buildingName, page);
 	    /*计算总的页数和总的记录数*/
 	    buildingInfoService.queryTotalPageAndRecordNumber(areaObj, buildingName);
@@ -126,8 +134,12 @@ public class BuildingInfoController extends BaseController {
 	/*前台按照查询条件分页查询楼盘信息信息*/
 	@RequestMapping(value = { "/frontlist" }, method = {RequestMethod.GET,RequestMethod.POST})
 	public String frontlist(@ModelAttribute("areaObj") AreaInfo areaObj,String buildingName,Integer currentPage, Model model, HttpServletRequest request) throws Exception  {
-		if (currentPage==null || currentPage == 0) currentPage = 1;
-		if (buildingName == null) buildingName = "";
+		if (currentPage==null || currentPage == 0) {
+			currentPage = 1;
+		}
+		if (buildingName == null) {
+			buildingName = "";
+		}
 		List<BuildingInfo> buildingInfoList = buildingInfoService.queryBuildingInfo(areaObj, buildingName, currentPage);
 	    /*计算总的页数和总的记录数*/
 	    buildingInfoService.queryTotalPageAndRecordNumber(areaObj, buildingName);
@@ -185,7 +197,9 @@ public class BuildingInfoController extends BaseController {
 			return;
 		}
 		String buildingPhotoFileName = this.handlePhotoUpload(request, "buildingPhotoFile");
-		if(!buildingPhotoFileName.equals("upload/NoImage.jpg"))buildingInfo.setBuildingPhoto(buildingPhotoFileName); 
+		if(!"upload/NoImage.jpg".equals(buildingPhotoFileName)) {
+			buildingInfo.setBuildingPhoto(buildingPhotoFileName);
+		}
 
 
 		try {
@@ -235,7 +249,9 @@ public class BuildingInfoController extends BaseController {
 	/*按照查询条件导出楼盘信息信息到Excel*/
 	@RequestMapping(value = { "/OutToExcel" }, method = {RequestMethod.GET,RequestMethod.POST})
 	public void OutToExcel(@ModelAttribute("areaObj") AreaInfo areaObj,String buildingName, Model model, HttpServletRequest request,HttpServletResponse response) throws Exception {
-        if(buildingName == null) buildingName = "";
+        if(buildingName == null) {
+			buildingName = "";
+		}
         List<BuildingInfo> buildingInfoList = buildingInfoService.queryBuildingInfo(areaObj,buildingName);
         ExportExcelUtil ex = new ExportExcelUtil();
         String _title = "BuildingInfo信息记录"; 

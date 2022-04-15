@@ -1,5 +1,8 @@
 package com.wanjiaxin.utils;
 
+/**
+ * @author 1035
+ */
 public class MessageUtil {
     public static final String ADD_SUCCESS = "添加成功";
     public static final String DELETE_SUCCESS = "删除成功";

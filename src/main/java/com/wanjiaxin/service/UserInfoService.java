@@ -7,12 +7,16 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 
+/**
+ * @author 1035
+ */
 @Service
 public class UserInfoService {
 
 	@Resource UserInfoMapper userInfoMapper;
     /*每页显示记录数目*/
-    private int rows = 10;;
+    private int rows = 10;
+
     public int getRows() {
 		return rows;
 	}
@@ -46,11 +50,21 @@ public class UserInfoService {
     /*按照查询条件分页查询用户信息记录*/
     public ArrayList<UserInfo> queryUserInfo(String user_name,String realName,String birthday,String cardNumber,String city,int currentPage) throws Exception { 
      	String where = "where 1=1";
-    	if(!user_name.equals("")) where = where + " and t_userInfo.user_name like '%" + user_name + "%'";
-    	if(!realName.equals("")) where = where + " and t_userInfo.realName like '%" + realName + "%'";
-    	if(!birthday.equals("")) where = where + " and t_userInfo.birthday like '%" + birthday + "%'";
-    	if(!cardNumber.equals("")) where = where + " and t_userInfo.cardNumber like '%" + cardNumber + "%'";
-    	if(!city.equals("")) where = where + " and t_userInfo.city like '%" + city + "%'";
+    	if(!"".equals(user_name)) {
+            where = where + " and t_userInfo.user_name like '%" + user_name + "%'";
+        }
+    	if(!"".equals(realName)) {
+            where = where + " and t_userInfo.realName like '%" + realName + "%'";
+        }
+    	if(!"".equals(birthday)) {
+            where = where + " and t_userInfo.birthday like '%" + birthday + "%'";
+        }
+    	if(!"".equals(cardNumber)) {
+            where = where + " and t_userInfo.cardNumber like '%" + cardNumber + "%'";
+        }
+    	if(!"".equals(city)) {
+            where = where + " and t_userInfo.city like '%" + city + "%'";
+        }
     	int startIndex = (currentPage-1) * this.rows;
     	return userInfoMapper.queryUserInfo(where, startIndex, this.rows);
     }
@@ -58,11 +72,21 @@ public class UserInfoService {
     /*按照查询条件查询所有记录*/
     public ArrayList<UserInfo> queryUserInfo(String user_name,String realName,String birthday,String cardNumber,String city) throws Exception  { 
      	String where = "where 1=1";
-    	if(!user_name.equals("")) where = where + " and t_userInfo.user_name like '%" + user_name + "%'";
-    	if(!realName.equals("")) where = where + " and t_userInfo.realName like '%" + realName + "%'";
-    	if(!birthday.equals("")) where = where + " and t_userInfo.birthday like '%" + birthday + "%'";
-    	if(!cardNumber.equals("")) where = where + " and t_userInfo.cardNumber like '%" + cardNumber + "%'";
-    	if(!city.equals("")) where = where + " and t_userInfo.city like '%" + city + "%'";
+    	if(!"".equals(user_name)) {
+            where = where + " and t_userInfo.user_name like '%" + user_name + "%'";
+        }
+    	if(!"".equals(realName)) {
+            where = where + " and t_userInfo.realName like '%" + realName + "%'";
+        }
+    	if(!"".equals(birthday)) {
+            where = where + " and t_userInfo.birthday like '%" + birthday + "%'";
+        }
+    	if(!"".equals(cardNumber)) {
+            where = where + " and t_userInfo.cardNumber like '%" + cardNumber + "%'";
+        }
+    	if(!"".equals(city)) {
+            where = where + " and t_userInfo.city like '%" + city + "%'";
+        }
     	return userInfoMapper.queryUserInfoList(where);
     }
 
@@ -74,26 +98,36 @@ public class UserInfoService {
     /*当前查询条件下计算总的页数和记录数*/
     public void queryTotalPageAndRecordNumber(String user_name,String realName,String birthday,String cardNumber,String city) throws Exception {
      	String where = "where 1=1";
-    	if(!user_name.equals("")) where = where + " and t_userInfo.user_name like '%" + user_name + "%'";
-    	if(!realName.equals("")) where = where + " and t_userInfo.realName like '%" + realName + "%'";
-    	if(!birthday.equals("")) where = where + " and t_userInfo.birthday like '%" + birthday + "%'";
-    	if(!cardNumber.equals("")) where = where + " and t_userInfo.cardNumber like '%" + cardNumber + "%'";
-    	if(!city.equals("")) where = where + " and t_userInfo.city like '%" + city + "%'";
+    	if(!"".equals(user_name)) {
+            where = where + " and t_userInfo.user_name like '%" + user_name + "%'";
+        }
+    	if(!"".equals(realName)) {
+            where = where + " and t_userInfo.realName like '%" + realName + "%'";
+        }
+    	if(!"".equals(birthday)) {
+            where = where + " and t_userInfo.birthday like '%" + birthday + "%'";
+        }
+    	if(!"".equals(cardNumber)) {
+            where = where + " and t_userInfo.cardNumber like '%" + cardNumber + "%'";
+        }
+    	if(!"".equals(city)) {
+            where = where + " and t_userInfo.city like '%" + city + "%'";
+        }
         recordNumber = userInfoMapper.queryUserInfoCount(where);
         int mod = recordNumber % this.rows;
         totalPage = recordNumber / this.rows;
-        if(mod != 0) totalPage++;
+        if(mod != 0) {
+            totalPage++;
+        }
     }
 
     /*根据主键获取用户信息记录*/
     public UserInfo getUserInfo(String user_name) throws Exception  {
-        UserInfo userInfo = userInfoMapper.getUserInfo(user_name);
-        return userInfo;
+        return userInfoMapper.getUserInfo(user_name);
     }
     /*根据主键获取用户信息记录*/
     public UserInfo checkLogin(String user_name, String password) throws Exception  {
-        UserInfo userInfo = userInfoMapper.checkLogin(user_name,password);
-        return userInfo;
+        return userInfoMapper.checkLogin(user_name,password);
     }
     /*更新用户信息记录*/
     public void updateUserInfo(UserInfo userInfo) throws Exception {

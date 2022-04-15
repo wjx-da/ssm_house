@@ -26,7 +26,9 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
-//NewsInfo管理控制层
+/**
+ * @author 1035
+ */ //NewsInfo管理控制层
 @Controller
 @RequestMapping("/NewsInfo")
 public class NewsInfoController extends BaseController {
@@ -64,10 +66,18 @@ public class NewsInfoController extends BaseController {
 	/*ajax方式按照查询条件分页查询新闻公告信息*/
 	@RequestMapping(value = { "/list" }, method = {RequestMethod.GET,RequestMethod.POST})
 	public void list(String newsTitle,String newsDate,Integer page,Integer rows, Model model, HttpServletRequest request,HttpServletResponse response) throws Exception {
-		if (page==null || page == 0) page = 1;
-		if (newsTitle == null) newsTitle = "";
-		if (newsDate == null) newsDate = "";
-		if(rows != 0)newsInfoService.setRows(rows);
+		if (page==null || page == 0) {
+			page = 1;
+		}
+		if (newsTitle == null) {
+			newsTitle = "";
+		}
+		if (newsDate == null) {
+			newsDate = "";
+		}
+		if(rows != 0) {
+			newsInfoService.setRows(rows);
+		}
 		List<NewsInfo> newsInfoList = newsInfoService.queryNewsInfo(newsTitle, newsDate, page);
 	    /*计算总的页数和总的记录数*/
 	    newsInfoService.queryTotalPageAndRecordNumber(newsTitle, newsDate);
@@ -112,9 +122,15 @@ public class NewsInfoController extends BaseController {
 	/*前台按照查询条件分页查询新闻公告信息*/
 	@RequestMapping(value = { "/frontlist" }, method = {RequestMethod.GET,RequestMethod.POST})
 	public String frontlist(String newsTitle,String newsDate,Integer currentPage, Model model, HttpServletRequest request) throws Exception  {
-		if (currentPage==null || currentPage == 0) currentPage = 1;
-		if (newsTitle == null) newsTitle = "";
-		if (newsDate == null) newsDate = "";
+		if (currentPage==null || currentPage == 0) {
+			currentPage = 1;
+		}
+		if (newsTitle == null) {
+			newsTitle = "";
+		}
+		if (newsDate == null) {
+			newsDate = "";
+		}
 		List<NewsInfo> newsInfoList = newsInfoService.queryNewsInfo(newsTitle, newsDate, currentPage);
 	    /*计算总的页数和总的记录数*/
 	    newsInfoService.queryTotalPageAndRecordNumber(newsTitle, newsDate);
@@ -214,8 +230,12 @@ public class NewsInfoController extends BaseController {
 	/*按照查询条件导出新闻公告信息到Excel*/
 	@RequestMapping(value = { "/OutToExcel" }, method = {RequestMethod.GET,RequestMethod.POST})
 	public void OutToExcel(String newsTitle,String newsDate, Model model, HttpServletRequest request,HttpServletResponse response) throws Exception {
-        if(newsTitle == null) newsTitle = "";
-        if(newsDate == null) newsDate = "";
+        if(newsTitle == null) {
+			newsTitle = "";
+		}
+        if(newsDate == null) {
+			newsDate = "";
+		}
         List<NewsInfo> newsInfoList = newsInfoService.queryNewsInfo(newsTitle,newsDate);
         ExportExcelUtil ex = new ExportExcelUtil();
         String _title = "NewsInfo信息记录"; 

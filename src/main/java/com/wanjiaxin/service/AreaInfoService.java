@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 
+/**
+ * @author 1035
+ */
 @Service
 public class AreaInfoService {
 
@@ -67,7 +70,9 @@ public class AreaInfoService {
         recordNumber = areaInfoMapper.queryAreaInfoCount(where);
         int mod = recordNumber % this.rows;
         totalPage = recordNumber / this.rows;
-        if(mod != 0) totalPage++;
+        if(mod != 0) {
+            totalPage++;
+        }
     }
 
     /*根据主键获取区域信息记录*/
