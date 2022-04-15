@@ -2,7 +2,7 @@
 <!--namespace命名空间，为了对sql语句进行隔离，方便管理，mapper开发dao方式，使用namespace有特殊作用  
 mapper代理开发时将namespace指定为mapper接口的全限定名  
  -->
-<mapper namespace="com.chengxusheji.mapper.WantHourseInfoMapper"> 
+<mapper namespace="com.wanjiaxin.mapper.WantHourseInfoMapper">
 <!--在mapper.xml文件中配置很多的sql语句，执行每个sql语句时，封装为MappedStatement对象 
 mapper.xml以statement为单位管理sql语句  
  -->
@@ -18,10 +18,10 @@ mapper.xml以statement为单位管理sql语句
 	</select>
 	<resultMap id="wantHourseInfoMap" type="wantHourseInfo">
         <id property="wantHourseId" column="wantHourseId" />
-        <association property="userObj" column="userObj" select="com.chengxusheji.mapper.UserInfoMapper.getUserInfo" />
-        <association property="position" column="position" select="com.chengxusheji.mapper.AreaInfoMapper.getAreaInfo" />
-        <association property="hourseTypeObj" column="hourseTypeObj" select="com.chengxusheji.mapper.HourseTypeMapper.getHourseType" />
-        <association property="priceRangeObj" column="priceRangeObj" select="com.chengxusheji.mapper.PriceRangeMapper.getPriceRange" />
+        <association property="userObj" column="userObj" select="com.wanjiaxin.mapper.UserInfoMapper.getUserInfo" />
+        <association property="position" column="position" select="com.wanjiaxin.mapper.AreaInfoMapper.getAreaInfo" />
+        <association property="hourseTypeObj" column="hourseTypeObj" select="com.wanjiaxin.mapper.HourseTypeMapper.getHourseType" />
+        <association property="priceRangeObj" column="priceRangeObj" select="com.wanjiaxin.mapper.PriceRangeMapper.getPriceRange" />
     </resultMap>
 
     <!-- 按照查询条件查询所有求租信息记录 -->

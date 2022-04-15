@@ -1,6 +1,6 @@
 <%@ page language="java" import="java.util.*"  contentType="text/html;charset=UTF-8"%> 
-<%@ page import="com.chengxusheji.po.GuestBook" %>
-<%@ page import="com.chengxusheji.po.UserInfo" %>
+<%@ page import="com.wanjiaxin.po.GuestBook" %>
+<%@ page import="com.wanjiaxin.po.UserInfo" %>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <%
     String path = request.getContextPath();

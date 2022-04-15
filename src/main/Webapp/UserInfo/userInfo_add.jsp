@@ -1,8 +1,7 @@
 <%@ page language="java" import="java.util.*"  contentType="text/html;charset=UTF-8"%>
 <jsp:include page="../check_logstate.jsp"/>
-
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/userInfo.css" />
-<div id="userInfoAddDiv">
+<div id="userInfoAddDiv" style="background: url(../images/background/img.png)">
 	<form id="userInfoAddForm" enctype="multipart/form-data"  method="post">
 		<div>
 			<span class="label">用户名:</span>

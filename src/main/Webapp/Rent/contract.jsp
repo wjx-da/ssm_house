@@ -1,7 +1,7 @@
-<%@ page import="com.chengxusheji.po.WantHourseInfo" %>
-<%@ page import="com.chengxusheji.po.UserInfo" %>
-<%@ page import="com.chengxusheji.po.Rent" %>
-<%@ page import="com.chengxusheji.po.Hourse" %>
+<%@ page import="com.wanjiaxin.po.WantHourseInfo" %>
+<%@ page import="com.wanjiaxin.po.UserInfo" %>
+<%@ page import="com.wanjiaxin.po.Rent" %>
+<%@ page import="com.wanjiaxin.po.Hourse" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     String path = request.getContextPath();

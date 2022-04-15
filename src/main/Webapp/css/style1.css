@@ -1,0 +1,21 @@
+*{
+    margin:0;
+    padding:0;
+}
+body{
+    background:#333;
+}
+h1{
+    font-size:5vw;
+    font-family: Arial, Helvetica, sans-serif;
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    white-space: nowrap;
+    color:#1e90ff;
+}
+canvas{
+    /* 可以给泡泡加上模糊效果，以免影响页面内的主要内容 */
+    /* filter:blur(5px);  */
+}

@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*"  contentType="text/html;charset=UTF-8"%>
-<%@ page import="com.chengxusheji.po.*" %>
+<%@ page import="com.wanjiaxin.po.*" %>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page isELIgnored="false"%>
