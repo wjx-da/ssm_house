@@ -210,7 +210,7 @@ $(function () {
 	$('#tabs').tabs({
 		fit : true,
 		border : false, 
-		//width: $("#tabs").parent().width()-100,  
+		width: $("#tabs").parent().width()-100,
 	});
 
 

@@ -5,7 +5,7 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <!--导航开始-->
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top" style="background: url(${pageContext.request.contextPath}/images/background/R-A.gif)">
     <div class="container">
         <!--小屏幕导航按钮和logo-->
         <div class="navbar-header">
@@ -14,13 +14,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="<%=basePath %>index.jsp" class="navbar-brand">XX设计网</a>
+            <a href="<%=basePath %>index.jsp" class="navbar-brand">房屋租赁首页</a>
         </div>
         <!--小屏幕导航按钮和logo-->
         <!--导航-->
         <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-left">
-                <li><a href="<%=basePath %>index.jsp">首页</a></li>
+            <ul class="nav navbar-nav navbar-left"><%--
+                <li><a href="<%=basePath %>index.jsp">首页</a></li>--%>
                <%--  <li><a href="<%=basePath %>UserInfo/frontlist">用户信息</a></li>--%>
                 <li><a href="<%=basePath %>AreaInfo/frontlist">区域信息</a></li>
                 <li><a href="<%=basePath %>BuildingInfo/frontlist">楼盘信息</a></li>

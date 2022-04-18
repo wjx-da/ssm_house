@@ -3,7 +3,7 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/buildingInfo.css" /> 
 
 <div id="buildingInfo_manage"></div>
-<div id="buildingInfo_manage_tool" style="padding:5px;">
+<div id="buildingInfo_manage_tool" style="padding:5px;	">
 	<div style="margin-bottom:5px;">
 		<a href="#" class="easyui-linkbutton" iconCls="icon-edit-new" plain="true" onclick="buildingInfo_manage_tool.edit();">修改</a>
 		<a href="#" class="easyui-linkbutton" iconCls="icon-delete-new" plain="true" onclick="buildingInfo_manage_tool.remove();">删除</a>
@@ -20,7 +20,7 @@
 	</div>
 </div>
 
-<div id="buildingInfoEditDiv">
+<div id="buildingInfoEditDiv" style="background: #0e90d2">
 	<form id="buildingInfoEditForm" enctype="multipart/form-data"  method="post">
 		<div>
 			<span class="label">楼盘编号:</span>

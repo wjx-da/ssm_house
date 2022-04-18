@@ -2,7 +2,7 @@
 <jsp:include page="../check_logstate.jsp"/>
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/hourse.css" />
-<div id="hourseAddDiv">
+<div id="hourseAddDiv" style="padding:0 10px;display:block; width: 1655px;height: 805px;  background: url(${pageContext.request.contextPath}/images/background/R-G.gif);background-size: cover">
 	<form id="hourseAddForm" enctype="multipart/form-data"  method="post">
 		<div>
 			<span class="label">房屋名称:</span>

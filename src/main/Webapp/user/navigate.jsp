@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/user/css/navigate.css">
-<div id="index_head">
+<div id="index_head" >
         <div id="address">
             <img id="addressimg" src="${pageContext.request.contextPath}/user/images/jkf_imgs/address.svg" alt="苏州">
             <span>当前城市[<span id="addresssp"></span>]</span>

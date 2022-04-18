@@ -2,7 +2,7 @@
 <jsp:include page="../check_logstate.jsp"/>
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/buildingInfo.css" />
-<div id="buildingInfoAddDiv">
+<div id="buildingInfoAddDiv" style="padding:0 10px;display:block; width: 1655px;height: 805px;  background: url(${pageContext.request.contextPath}/images/background/R-G.gif);background-size: cover">
 	<form id="buildingInfoAddForm" enctype="multipart/form-data"  method="post">
 		<div>
 			<span class="label">所在区域:</span>

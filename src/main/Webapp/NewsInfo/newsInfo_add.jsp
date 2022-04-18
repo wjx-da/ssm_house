@@ -2,7 +2,7 @@
 <jsp:include page="../check_logstate.jsp"/>
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/newsInfo.css" />
-<div id="newsInfoAddDiv">
+<div id="newsInfoAddDiv" style="padding:0 10px;display:block; width: 1655px;height: 805px;  background: url(${pageContext.request.contextPath}/images/background/R-G.gif);background-size: cover">
 	<form id="newsInfoAddForm" enctype="multipart/form-data"  method="post">
 		<div>
 			<span class="label">标题:</span>

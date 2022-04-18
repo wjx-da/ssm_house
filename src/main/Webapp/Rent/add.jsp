@@ -21,7 +21,7 @@
 </head>
 <body>
 <script language="javascript" type="text/javascript" src="${pageContext.request.contextPath}/user/My97DatePicker/WdatePicker.js"></script>
-<form action="/Rent/addRent" method="post" >
+<form action="/Rent/addRent" method="post" style="padding:0 10px;display:block; width: 1655px;height: 805px;  background: url(${pageContext.request.contextPath}/images/background/R-G.gif);background-size: cover" >
 <input type="text" id="wantHourseInfo" name="wantHourseInfoId" class="form-control" value="<%=wantHourseInfo.getWantHourseId()%>" readonly></br>
 <input type="text" id="hourse" name="hourseId" class="form-control"value="<%=wantHourseInfo.getHourseId()%>" readonly></br>
 <input type="text" id="userInfo" name="userName" class="form-control" value="<%=userInfo.getUser_name()%>" readonly></br>

@@ -8,13 +8,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1 , user-scalable=no">
-  <title>精品项目设计-首页</title>
+  <title>房屋租赁系统首页</title>
   <link href="<%=basePath %>plugins/bootstrap.css" rel="stylesheet">
   <link href="<%=basePath %>plugins/font-awesome.css" rel="stylesheet">
   <link href="<%=basePath %>plugins/bootstrap-dashen.css" rel="stylesheet">
 </head>
-<body> 
-<div class="container">
+<body>
+<div class="container" >
 <jsp:include page="header.jsp"></jsp:include>
  <!-- 广告轮播开始 -->
   <section id="main_ad" class="carousel slide" data-ride="carousel">
@@ -27,10 +27,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </ol>
     <!-- 轮播项 -->
     <div class="carousel-inner" role="listbox">  
-      <div class="item active" data-image-lg="<%=basePath %>images/slider/slide_01_2000x410.jpg" data-image-xs="<%=basePath %>images/slider/slide_01_640x340.jpg"></div>
-      <div class="item" data-image-lg="<%=basePath %>images/slider/slide_02_2000x410.jpg" data-image-xs="<%=basePath %>images/slider/slide_02_640x340.jpg"></div>
-      <div class="item" data-image-lg="<%=basePath %>images/slider/slide_03_2000x410.jpg" data-image-xs="<%=basePath %>images/slider/slide_03_640x340.jpg"></div>
-      <div class="item" data-image-lg="<%=basePath %>images/slider/slide_04_2000x410.jpg" data-image-xs="<%=basePath %>images/slider/slide_04_640x340.jpg"></div>
+      <div class="item active" data-image-lg="<%=basePath %>images/slider/A-A.jpg" data-image-xs="<%=basePath %>images/slider/slide_01_640x340.jpg"></div>
+      <div class="item" data-image-lg="<%=basePath %>images/slider/A-B.jpg" data-image-xs="<%=basePath %>images/slider/A-B.jpg"></div>
+      <div class="item" data-image-lg="<%=basePath %>images/slider/A-C.jpg" data-image-xs="<%=basePath %>images/slider/A-C.jpg"></div>
+      <div class="item" data-image-lg="<%=basePath %>images/slider/A-E.jpg" data-image-xs="<%=basePath %>images/slider/A-E.jpg"></div>
     </div> 
     <!-- 控制按钮 -->
     <a class="left carousel-control" href="#main_ad" role="button" data-slide="prev">
@@ -56,8 +56,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <i class="icon-uniE907"></i>
               </div>
               <div class="media-body">
-                <h4 class="media-heading">精品设计制作</h4>
-                <p>此设计已经通过了精心调试</p>
+                <h4 class="media-heading">舒适温馨</h4>
+                <p>属于你的家</p>
               </div>
             </div>
           </a>
@@ -69,8 +69,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <i class="icon-uniE907"></i>
               </div>
               <div class="media-body">
-                <h4 class="media-heading">精品设计制作</h4>
-                <p>此设计已经通过了精心调试</p>
+                <h4 class="media-heading">优质精选</h4>
+                <p>海量优质好房等你</p>
               </div>
             </div>
           </a>
@@ -82,8 +82,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <i class="icon-uniE907"></i>
               </div>
               <div class="media-body">
-                <h4 class="media-heading">精品设计制作</h4>
-                <p>此设计已经通过了精心调试</p>
+                <h4 class="media-heading">便宜舒适</h4>
+                <p>为每一位租客服务</p>
               </div>
             </div>
           </a>
@@ -95,8 +95,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <i class="icon-uniE907"></i>
               </div>
               <div class="media-body">
-                <h4 class="media-heading">精品设计制作</h4>
-                <p>此设计已经通过了精心调试</p>
+                <h4 class="media-heading">交通便利</h4>
+                <p>上下班不再有阻挠</p>
               </div>
             </div>
           </a>
@@ -108,8 +108,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <i class="icon-uniE907"></i>
               </div>
               <div class="media-body">
-                <h4 class="media-heading">精品设计制作</h4>
-                <p>此设计已经通过了精心调试</p>
+                <h4 class="media-heading">装修精良</h4>
+                <p>为您身心舒畅</p>
               </div>
             </div>
           </a>
@@ -121,8 +121,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <i class="icon-uniE907"></i>
               </div>
               <div class="media-body">
-                <h4 class="media-heading">精品设计制作</h4>
-                <p>此设计已经通过了精心调试</p>
+                <h4 class="media-heading">家具齐全</h4>
+                <p>打包即能入住</p>
               </div>
             </div>
           </a>

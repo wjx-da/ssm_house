@@ -21,7 +21,7 @@
 <link href="<%=basePath %>plugins/animate.css" rel="stylesheet">
 <link href="<%=basePath %>plugins/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
 </head>
-<body style="margin-top:70px;">
+<body style="margin-top:70px; background: url(<%=basePath %>/images/background/R-C.jpg)">
 <div class="container">
 <jsp:include page="../header.jsp"></jsp:include>
 	<div class="row"> 

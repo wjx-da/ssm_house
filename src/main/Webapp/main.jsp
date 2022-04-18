@@ -23,7 +23,7 @@
 <div data-options="region:'west',title:'导航',split:true,iconCls:'icon-world'" style="width:200px;padding:10px; background: url(images/background/R-A.gif)">
 	<ul id="nav"></ul>
 </div>   
-<div data-options="region:'center'" style="overflow:hidden;">
+<div data-options="region:'center'" style="overflow:hidden">
 	<div id="tabs">
 		<div title="起始页" iconCls="icon-house" style="padding:0 10px;display:block;font-size:70px">
 			<canvas  id="canvas"></canvas>
