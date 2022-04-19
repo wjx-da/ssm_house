@@ -189,7 +189,19 @@ $(function () {
 			    		    url: "password_modify.jsp"
 			    	   	}
 			    	   ]
-			}],
+			},{
+						text: "房屋合同管理",
+							state: "closed",
+							iconCls: "icon-system",
+							children:
+						[{
+							text: "房屋合同管理",
+							state: "open",
+							iconCls: "icon-edit",
+							url: "Rent/rent_query_result.jsp"
+						}
+						]
+		}],
 		onClick : function (node) {
 			if (node.url) {
 				if ($('#tabs').tabs('exists', node.text)) {

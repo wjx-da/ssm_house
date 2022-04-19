@@ -35,4 +35,4 @@
 		</div>
 	</form>
 </div>
-<script type="text/javascript" src="${pageContext.request.contextPath}/PriceRange/js/priceRange_manage.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/Rent/house/js/priceRange_manage.js"></script>
