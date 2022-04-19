@@ -13,7 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <link href="<%=basePath %>plugins/font-awesome.css" rel="stylesheet">
   <link href="<%=basePath %>plugins/bootstrap-dashen.css" rel="stylesheet">
 </head>
-<body>
+<body >
 <div class="container" >
 <jsp:include page="header.jsp"></jsp:include>
  <!-- 广告轮播开始 -->
