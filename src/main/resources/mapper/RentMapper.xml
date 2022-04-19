@@ -19,14 +19,20 @@ mapper代理开发时将namespace指定为mapper接口的全限定名
 		<association property="hourseObj" column="hourseObj" select="com.wanjiaxin.mapper.HourseMapper.getHourse" />
 		<association property="userInfoObj" column="userInfoObj" select="com.wanjiaxin.mapper.UserInfoMapper.getUserInfo" />
 	</resultMap>
-    <!-- 更新租金范围记录 -->
-    <update id="updatePriceRange" parameterType="priceRange">
-		update t_priceRange set priceName=#{priceName} where rangeId = #{rangeId}
-	</update>
 
-    <!-- 删除租金范围记录 -->
-    <delete id="deletePriceRange" parameterType="int">
-		delete from t_priceRange where rangeId=#{rangeId}
+	<!-- 按照查询条件分页查询租金范围记录 -->
+	<select id="queryRent1" resultMap="RentMap" >
+		select t_rent.* from t_rent ${arg0} limit #{arg1},#{arg2}
+	</select>
+	<!-- 按照查询条件的租金范围记录数 -->
+	<select id="queryRentCount" resultType="int">
+		select count(*) from t_rent ${where}
+	</select>
+	<!-- 按照查询条件查询所有租金范围记录 -->
+	<select id="queryRentList" resultMap="RentMap" >
+		select t_rent.* from t_rent ${where}
+	</select>
+	<delete id="delete" parameterType="int">
+		delete from t_rent where id = #{0}
 	</delete>
-
 </mapper>

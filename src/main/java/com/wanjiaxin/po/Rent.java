@@ -15,6 +15,7 @@ public class Rent {
         JSONObject jsonHourse=new JSONObject();
         jsonHourse.accumulate("id", this.getId());
         jsonHourse.accumulate("hourseObj", this.getHourseObj().getHourseId());
+        jsonHourse.accumulate("hourseName", this.getHourseObj().getHourseName());
         jsonHourse.accumulate("userInfoObj", this.getUserInfoObj().getUser_name());
         jsonHourse.accumulate("starttime", this.getStarttime());
         jsonHourse.accumulate("endtime", this.getEndtime());

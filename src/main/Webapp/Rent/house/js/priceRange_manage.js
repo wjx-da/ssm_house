@@ -3,7 +3,7 @@ $(function () {
 	initPriceRangeManageTool(); //建立PriceRange管理对象
 	priceRange_manage_tool.init(); //如果需要通过下拉框查询，首先初始化下拉框的值
 	$("#priceRange_manage").datagrid({
-		url : 'PriceRange/list',
+		url : 'Rent/list',
 		fit : true,
 		fitColumns : true,
 		striped : true,
@@ -13,20 +13,45 @@ $(function () {
 		pageSize : 5,
 		pageList : [5, 10, 15, 20, 25],
 		pageNumber : 1,
-		sortName : "rangeId",
+		sortName : "id",
 		sortOrder : "desc",
 		toolbar : "#priceRange_manage_tool",
 		columns : [[
 			{
-				field : "rangeId",
-				title : "记录编号",
+				field : "hourseObj",
+				title : "房屋id",
 				width : 70,
 			},
 			{
-				field : "priceName",
-				title : "价格区间",
+				field : "hourseName",
+				title : "房屋名称",
 				width : 140,
 			},
+			{
+				field : "userInfoObj",
+				title : "租户",
+				width : 140,
+			},
+			{
+				field : "starttime",
+				title : "开始时间",
+				width : 140,
+			},
+			{
+				field : "endtime",
+				title : "结束时间",
+				width : 140,
+			},
+			{
+				field : "rentprice",
+				title : "租金",
+				width : 140,
+			},
+			{
+				field : "nowtime",
+				title : "合同签署时间",
+				width : 140,
+			}
 		]],
 	});
 
@@ -103,7 +128,7 @@ function initPriceRangeManageTool() {
 		},
 		exportExcel: function() {
 			$("#priceRangeQueryForm").form({
-			    url:"PriceRange/OutToExcel",
+			    url:"Rent/OutToExcel",
 			});
 			//提交表单
 			$("#priceRangeQueryForm").submit();
@@ -113,15 +138,11 @@ function initPriceRangeManageTool() {
 			if (rows.length > 0) {
 				$.messager.confirm("确定操作", "您正在要删除所选的记录吗？", function (flag) {
 					if (flag) {
-						var rangeIds = [];
-						for (var i = 0; i < rows.length; i ++) {
-							rangeIds.push(rows[i].rangeId);
-						}
 						$.ajax({
 							type : "POST",
-							url : "PriceRange/deletes",
+							url : "Rent/deletes",
 							data : {
-								rangeIds : rangeIds.join(","),
+								hourseId:	rows[0].hourseObj,
 							},
 							beforeSend : function () {
 								$("#priceRange_manage").datagrid("loading");
@@ -149,44 +170,17 @@ function initPriceRangeManageTool() {
 				$.messager.alert("提示", "请选择要删除的记录！", "info");
 			}
 		},
-		edit : function () {
+		contract : function () {
 			var rows = $("#priceRange_manage").datagrid("getSelections");
-			if (rows.length > 1) {
-				$.messager.alert("警告操作！", "编辑记录只能选定一条数据！", "warning");
-			} else if (rows.length == 1) {
-				$.ajax({
-					url : "PriceRange/" + rows[0].rangeId +  "/update",
-					type : "get",
-					data : {
-						//rangeId : rows[0].rangeId,
-					},
-					beforeSend : function () {
-						$.messager.progress({
-							text : "正在获取中...",
-						});
-					},
-					success : function (priceRange, response, status) {
-						$.messager.progress("close");
-						if (priceRange) { 
-							$("#priceRangeEditDiv").dialog("open");
-							$("#priceRange_rangeId_edit").val(priceRange.rangeId);
-							$("#priceRange_rangeId_edit").validatebox({
-								required : true,
-								missingMessage : "请输入记录编号",
-								editable: false
-							});
-							$("#priceRange_priceName_edit").val(priceRange.priceName);
-							$("#priceRange_priceName_edit").validatebox({
-								required : true,
-								missingMessage : "请输入价格区间",
-							});
-						} else {
-							$.messager.alert("获取失败！", "未知错误导致失败，请重试！", "warning");
-						}
+			if (rows.length > 0) {
+				alert(rows[0].hourseObj);
+				$.messager.confirm("确定操作", "您确定要查看出租的合同吗？", function (flag) {
+					if (flag) {
+						top.location.href="Rent/Check?hourseId="+rows[0].hourseObj;
 					}
 				});
-			} else if (rows.length == 0) {
-				$.messager.alert("警告操作！", "编辑记录至少选定一条数据！", "warning");
+			} else {
+				$.messager.alert("提示", "请选择要查看出租的合同！", "info");
 			}
 		},
 	};

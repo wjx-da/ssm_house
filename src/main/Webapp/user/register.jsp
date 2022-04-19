@@ -67,7 +67,7 @@
                            placeholder="请输入用户名">
                 </div>
                 <div>
-                    <label for="realName">用户名</label>
+                    <label for="realName">真实姓名</label>
                     <span id="sp11"></span>
                 </div>
                 <div>

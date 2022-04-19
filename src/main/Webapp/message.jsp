@@ -2,12 +2,12 @@
 <% 
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-String message=java.net.URLDecoder.decode((String)request.getAttribute("message")); 
-
+String message=java.net.URLDecoder.decode((String)request.getAttribute("message"));
+  message = new String( message.getBytes("iso-8859-1"), "UTF-8");
 %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+  <meta http-equiv="Content-Type" content="text/html">
 <title>错误提示</title>
 <link href="CSS/style.css" rel="stylesheet">
 </head>
@@ -19,7 +19,7 @@ String message=java.net.URLDecoder.decode((String)request.getAttribute("message"
       <tr>
         <td align="center" background="<%=basePath %>images/error.jpg"><table width="388" height="194" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td align="center"><img src="<%=basePath %>images/error_b.gif" width="31" height="31">&nbsp;&nbsp; <%=message%> <br>
+            <td align="center"><img src="<%=basePath %>images/error_b.gif" width="31" height="31">&nbsp;&nbsp; <%=message%> asdasd<br>
               <br>
               <!--  
               <input name="Submit" type="submit" class="btn_grey" value="返回" onClick="history.back(-1)">--></td>
