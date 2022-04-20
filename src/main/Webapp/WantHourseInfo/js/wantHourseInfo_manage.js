@@ -188,7 +188,7 @@ function initWantHourseInfoManageTool() {
 			var rows = $("#wantHourseInfo_manage").datagrid("getSelections");
 			if (rows.length > 0) {
 
-				$.messager.confirm("确定操作", "您正在要删除所选的记录吗？", function (flag) {
+				$.messager.confirm("确定操作", "您正在要出租当前房屋吗？", function (flag) {
 					if (flag) {
 						var wantHourseIds = [];
 						for (var i = 0; i < rows.length; i ++) {

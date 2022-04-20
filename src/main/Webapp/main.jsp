@@ -13,6 +13,8 @@
 </head>
 <body class="easyui-layout">
 
+<script type="text/javascript" src="${pageContext.request.contextPath}/user/js/background.js"></script>
+
 <div data-options="region:'north',title:'header',split:true,noheader:true" style="height:60px;background : url(images/background/t.gif)">
 	<div class="logo">房屋租赁系统后台管理</div>
 	<div class="logout">您好，尊敬的<%=session.getAttribute("username")%> 管理员| <a href="logout">退出</a></div>
@@ -22,16 +24,17 @@
 </div>    
 <div data-options="region:'west',title:'导航',split:true,iconCls:'icon-world'" style="width:200px;padding:10px; background: url(images/background/R-A.gif)">
 	<ul id="nav"></ul>
-</div>   
-<div data-options="region:'center'" style="overflow:hidden">
+</div>
+<div data-options="region:'center'" >
 	<div id="tabs">
-		<div title="起始页" iconCls="icon-house" style="padding:0 10px;display:block;font-size:70px">
+		<div title="起始页" iconCls="icon-house" style="padding:0 10px;display:block;font-size:70px;">
+			<div style="z-index: 10">
 			<canvas  id="canvas"></canvas>
 			<h1>欢迎来到后台管理系统！</h1>
+			</div>
 		</div>
 	</div>
-</div> 
-
+</div>
 
 <script type="text/javascript" src="easyui/jquery.min.js"></script>
 <script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>

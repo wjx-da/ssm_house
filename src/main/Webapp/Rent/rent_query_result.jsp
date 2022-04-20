@@ -2,14 +2,14 @@
 <jsp:include page="../check_logstate.jsp"/> 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/priceRange.css" /> 
 
-<div id="priceRange_manage"></div>
-<div id="priceRange_manage_tool" style="padding:5px;">
+<div id="Rent_manage"></div>
+<div id="Rent_manage_tool" style="padding:5px;">
 	<div style="margin-bottom:5px;">
-		<a href="#" class="easyui-linkbutton" iconCls="icon-delete-new" plain="true" onclick="priceRange_manage_tool.remove();">删除</a>
-		<a href="#" class="easyui-linkbutton" iconCls="icon-reload" plain="true"  onclick="priceRange_manage_tool.contract();">查看合同</a>
-		<a href="#" class="easyui-linkbutton" iconCls="icon-reload" plain="true"  onclick="priceRange_manage_tool.reload();">刷新</a>
-		<a href="#" class="easyui-linkbutton" iconCls="icon-redo" plain="true" onclick="priceRange_manage_tool.redo();">取消选择</a>
-		<a href="#" class="easyui-linkbutton" iconCls="icon-export" plain="true" onclick="priceRange_manage_tool.exportExcel();">导出到excel</a>
+		<a href="#" class="easyui-linkbutton" iconCls="icon-delete-new" plain="true" onclick="Rent_manage_tool.remove();">删除</a>
+		<a href="#" class="easyui-linkbutton" iconCls="icon-reload" plain="true"  onclick="Rent_manage_tool.contract();">查看合同</a>
+		<a href="#" class="easyui-linkbutton" iconCls="icon-reload" plain="true"  onclick="Rent_manage_tool.reload();">刷新</a>
+		<a href="#" class="easyui-linkbutton" iconCls="icon-redo" plain="true" onclick="Rent_manage_tool.redo();">取消选择</a>
+		<a href="#" class="easyui-linkbutton" iconCls="icon-export" plain="true" onclick="Rent_manage_tool.exportExcel();">导出到excel</a>
 	</div>
 	<div style="padding:0 0 0 7px;color:#333;">
 		<form id="priceRangeQueryForm" method="post">
@@ -67,4 +67,4 @@
 		</div>
 	</form>
 </div>
-<script type="text/javascript" src="${pageContext.request.contextPath}/Rent/house/js/priceRange_manage.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/Rent/house/js/Rent_manage.js"></script>
