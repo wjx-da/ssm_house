@@ -26,6 +26,7 @@ $(function () {
 				field : "newsContent",
 				title : "新闻内容",
 				width : 140,
+
 			},
 			{
 				field : "newsDate",

@@ -21,7 +21,7 @@ let codeTimer; // 验证码的计时器
 
 phoneIpt.onblur = function () {
     if (!phoneType1) {
-        phoneSpan.innerText = "手机号格式有误，请重新输入";
+        phoneSpan.innerText = "邮箱格式有误，请重新输入";
         let timer = setTimeout(function () {
             phoneSpan.innerText = "";
             clearTimeout(timer);

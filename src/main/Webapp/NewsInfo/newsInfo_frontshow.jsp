@@ -19,9 +19,9 @@
   <link href="<%=basePath %>plugins/font-awesome.css" rel="stylesheet">
   <link href="<%=basePath %>plugins/animate.css" rel="stylesheet"> 
 </head>
-<body style="margin-top:70px;"> 
+<body  style="margin-top:70px; background: url(<%=basePath %>/images/room/R-C.jpg);background-size: cover">
 <jsp:include page="../header.jsp"></jsp:include>
-<div class="container">
+<div class="container" style="height: 780px">
 	<ul class="breadcrumb">
   		<li><a href="<%=basePath %>index.jsp">首页</a></li>
   		<li><a href="<%=basePath %>NewsInfo/frontlist">新闻公告信息</a></li>

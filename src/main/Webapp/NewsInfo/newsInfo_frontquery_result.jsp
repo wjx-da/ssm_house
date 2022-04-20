@@ -23,8 +23,8 @@
 <link href="<%=basePath %>plugins/animate.css" rel="stylesheet">
 <link href="<%=basePath %>plugins/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
 </head>
-<body style="margin-top:70px; background: url(<%=basePath %>/images/room/R-D.jpg);background-size: cover">
-<div class="container"style="height: 840px">
+<body style="margin-top:70px; background: url(<%=basePath %>/images/room/R-C.jpg);background-size: cover">
+<div class="container"style="height: 780px">
 <jsp:include page="../header.jsp"></jsp:include>
 	<div class="row"> 
 		<div class="col-md-9 wow fadeInDown" data-wow-duration="0.5s">
@@ -50,11 +50,12 @@
 				    	            		for(int i=0;i<newsInfoList.size();i++) {
 					    	            		int currentIndex = startIndex + i + 1; //当前记录的序号
 					    	            		NewsInfo newsInfo = newsInfoList.get(i); //获取到新闻公告对象
+												newsInfo.setNewsContent(newsInfo.getNewsContent().length() > 40 ? (newsInfo.getNewsContent().substring(0,40)+"..."): newsInfo.getNewsContent());
  										%>
  										<tr>
  											<td><%=currentIndex %></td>
  											<td><%=newsInfo.getNewsTitle() %></td>
- 											<td><%=newsInfo.getNewsContent() %></td>
+ 											<td><%=newsInfo.getNewsContent()%></td>
  											<td><%=newsInfo.getNewsDate() %></td>
  											<td>
  												<a href="<%=basePath  %>NewsInfo/<%=newsInfo.getNewsId() %>/frontshow"><i class="fa fa-info"></i>&nbsp;查看</a>&nbsp;

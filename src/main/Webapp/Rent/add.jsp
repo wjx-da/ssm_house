@@ -109,9 +109,9 @@
 <input type="text" id="wantHourseInfo" name="wantHourseInfoId" class="error" value="<%=wantHourseInfo.getWantHourseId()%>" readonly></br>
 <input type="text" id="hourse" name="hourseId" class="form-control"value="<%=wantHourseInfo.getHourseId()%>" readonly></br>
 <input type="text" id="userInfo" name="userName" class="form-control" value="<%=userInfo.getUser_name()%>" readonly></br>
-<input type="text" id="starttime" name="starttime" class="form-control" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})" placeholder="请输入用户名"></br>
+<input type="text" id="starttime" name="starttime" class="form-control" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})" placeholder="请输入开始出租时间"></br>
 
-<input type="text" id="endtime" name="endtime" class="form-control"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})" placeholder="请输入用户名"></br>
+<input type="text" id="endtime" name="endtime" class="form-control"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})" placeholder="请输入租期结束时间"></br>
 <input type="text" id="rentprice" name="rentprice" class="form-control" placeholder="请输入租价"></br>
     <button type="submit"  class="button"   value="提交合同信息"> 提交合同信息</button>
     <input  onclick="history.go(-1)" value="返回"  style="margin-left:250px;" class="button"  type="button">

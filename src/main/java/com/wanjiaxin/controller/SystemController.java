@@ -65,12 +65,11 @@ public class SystemController {
 							 String verification, Model model, HttpSession session) throws Exception {
 		String text = (String) session.getAttribute("imageCode");
 		System.out.println(username+"======"+password+"=========="+verification);
-		if(!text.equals(verification)) {
+		if(!text.equalsIgnoreCase(verification)) {
 			model.addAttribute("msg","验证码错误");
 			return "user/login";
 		}
 		UserInfo user =userInfoService.checkLogin(username,password);
-		System.out.println(user.toString()+"========");
 		if (user == null ||user.getRealName() == null) {
 			model.addAttribute("msg","用户名或密码错误");
 			return "user/login";

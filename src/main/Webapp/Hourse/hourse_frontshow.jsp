@@ -26,7 +26,7 @@
   <link href="<%=basePath %>plugins/font-awesome.css" rel="stylesheet">
   <link href="<%=basePath %>plugins/animate.css" rel="stylesheet"> 
 </head>
-<body style="margin-top:70px;"> 
+<body style="margin-top:70px; background: url(<%=basePath %>/images/room/R-C.jpg);background-size: cover">
 <jsp:include page="../header.jsp"></jsp:include>
 <div class="container">
 	<ul class="breadcrumb">

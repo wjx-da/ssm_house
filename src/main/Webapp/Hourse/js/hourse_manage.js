@@ -82,6 +82,11 @@ $(function () {
 				width : 140,
 			},
 			{
+				field : "card",
+				title : "身份证",
+				width : 140,
+			},
+			{
 				field : "connectPhone",
 				title : "联系电话",
 				width : 140,
@@ -91,6 +96,7 @@ $(function () {
 				title : "租户",
 				width : 140,
 			},
+
 		]],
 	});
 

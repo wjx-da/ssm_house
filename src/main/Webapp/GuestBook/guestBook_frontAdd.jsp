@@ -17,10 +17,10 @@
 <link href="<%=basePath %>plugins/animate.css" rel="stylesheet">
 <link href="<%=basePath %>plugins/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
 </head>
-<body style="margin-top:70px;">
+<body style="margin-top:70px; background: url(<%=basePath %>/images/room/R-C.jpg);background-size: cover">
 <jsp:include page="../header.jsp"></jsp:include>
 <script language="javascript" type="text/javascript" src="${pageContext.request.contextPath}/user/My97DatePicker/WdatePicker.js"></script>
-<div class="container">
+<div class="container" style="height: 780px">
 	<div class="row">
 		<div class="col-md-12 wow fadeInUp" data-wow-duration="0.5s">
 			<div>
@@ -60,7 +60,7 @@
 							 </div>
 						  </div>
 				          <div class="form-group">
-				             <span class="col-md-2""></span>
+				             <span class="col-md-2"></span>
 				             <span onclick="ajaxGuestBookAdd();" class="btn btn-primary bottom5 top5">添加</span>
 				          </div>
 						</form> 

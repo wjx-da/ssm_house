@@ -72,7 +72,7 @@
                 </div>
                 <div>
                     <input type="text" maxlength="19" class="ipt1" id="realName" name="realName"
-                           placeholder="请输入用户名">
+                           placeholder="请输入真实姓名">
                 </div>
                 <div>
                     <label for="phoneIpt">邮箱</label>

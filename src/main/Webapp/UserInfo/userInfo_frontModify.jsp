@@ -19,8 +19,8 @@
   <link href="<%=basePath %>plugins/font-awesome.css" rel="stylesheet">
   <link href="<%=basePath %>plugins/animate.css" rel="stylesheet"> 
 </head>
-<body style="margin-top:70px;"> 
-<div class="container">
+<body style="margin-top:70px; background: url(<%=basePath %>/images/room/R-C.jpg);background-size: cover">
+<div class="container" >
 <jsp:include page="../header.jsp"></jsp:include>
 	<div class="col-md-9 wow fadeInLeft">
 	<ul class="breadcrumb">

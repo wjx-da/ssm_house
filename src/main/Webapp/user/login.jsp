@@ -10,11 +10,11 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/user/js/background.js"></script>
 <div style="width: 980px; margin: -190px 0 0 -150px;  top: 50%; left: 50%; position: absolute; z-index: 10">
 <form action="/frontLogin" method="post" onsubmit="return check_form(this)">
-            <h1>登录页面 <a href="/"><input type="button" value="首页"></a></h1>
+            <h1>登录页面 </h1>
             用户名：<input type="text" id="username" name="username">
             <span id="s_username"></span>
             </br></br>
-            密码：<input type="password" id="password" name="password">
+            密码：     <input type="password" id="password" style="margin-left:11px;" name="password">
             <span id="s_password"></span>
             </br></br>
             验证码：<input type="text" id="verification" name="verification" size="5">
@@ -24,8 +24,8 @@
 
             <input type="submit" value="登录" style="margin-left:50px;">
 
-        <a href="register.jsp" style="margin-left:50px;"><input type="button" value="注册"></a>
-
+        <a href="register.jsp" style="margin-left:30px;"><input type="button" value="注册"></a>
+        <a href="/" style="margin-left:30px;"><input type="button" value="首页"></a>
 
 </form>
 </div>

@@ -38,8 +38,8 @@
 <link href="<%=basePath %>plugins/animate.css" rel="stylesheet">
 <link href="<%=basePath %>plugins/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
 </head>
-<body style="margin-top:70px; background: url(<%=basePath %>/images/room/R-D.jpg);background-size: cover">
-<div class="container"style="height: 840px">
+<body style="margin-top:70px; background: url(<%=basePath %>/images/room/R-C.jpg);background-size: cover">
+<div class="container"style="height: 780px">
 <jsp:include page="../header.jsp"></jsp:include>
 	<div class="row"> 
 		<div class="col-md-9 wow fadeInDown" data-wow-duration="0.5s">
