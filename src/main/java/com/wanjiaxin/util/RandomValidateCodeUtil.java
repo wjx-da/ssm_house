@@ -1,7 +1,11 @@
 package com.wanjiaxin.util;
 
+import org.junit.Test;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 /**
@@ -84,6 +88,12 @@ public class RandomValidateCodeUtil {
         Color color = new Color(ran.nextInt(256),
                 ran.nextInt(256), ran.nextInt(256));
         return color;
+    }
+    @Test
+    public void test(){
+        Map<String,Map<String,Object>> map = new HashMap<>();
+        int  e = (int) map.getOrDefault("1",new HashMap<>()).getOrDefault("a",0);
+        System.out.println(map.get("1").get("a"));
     }
 }
 
